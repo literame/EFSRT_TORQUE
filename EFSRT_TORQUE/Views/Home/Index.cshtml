@@ -2,32 +2,170 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
-    </div>
+<main class="body">
+
+
+        <div class="body">
+            <div class="txtTittle">
+                <p class="paddistance">Cotizaciones</p>
+                <ul>
+                    <li><ion-icon name="newspaper-outline"></ion-icon></li>
+                    <li><ion-icon name="notifications-outline"></ion-icon></li>
+                    <li><ion-icon name="person-outline"></ion-icon></li>
+                </ul>
+            </div>
+            <div>
+                <div class="paddistance bannermenu">
+                    <ul>
+                        <li><p>Mis Cotizaciones</p></li>
+                        <li><p>Gestionar cotizaciones</p></li>
+                        <li><p>Validar cotizacion</p></li>
+                    </ul>
+                </div>
+                <div class="filterMenu paddistance">
+                    <p>Ordenar:</p>
+                    <div class="ordermenu">
+                        <div class="filtersitem">
+                            <ul>
+                                <li class="dropPopitem">
+                                    <p>Todos los tipos</p>
+                                    <ion-icon class="txtcolorgraydark"
+                                              name="caret-down-outline"></ion-icon>
+                                </li>
+                                <li class="dropPopitem">
+                                    <p>Todos los estados</p>
+                                    <ion-icon class="txtcolorgraydark"
+                                              name="caret-down-outline"></ion-icon>
+                                </li>
+                                <li class="dropPopitem">
+                                    <p>Por nombre</p>
+                                    <ion-icon class="txtcolorgraydark"
+                                              name="caret-down-outline"></ion-icon>
+                                </li>
+                                <li class="dropPopitem">
+                                    <p>Año: 2024</p>
+                                    <ion-icon class="txtcolorgraydark"
+                                              name="caret-down-outline"></ion-icon>
+                                </li>
+                                <li class="dropPopitem">
+                                    <p>Mes: Enero</p>
+                                    <ion-icon class="txtcolorgraydark"
+                                              name="caret-down-outline"></ion-icon>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="filterSearch">
+                            <p>Buscar por :</p>
+                            <input type="text" name="" id="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="resumen paddistance">
+                    <section>
+                        <div class="hideopt">
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="eye-off-outline"></ion-icon>
+                            <p class="noselect">ocultar el resumen</p>
+                        </div>
+                        <div class="resumeOption">
+                            <p class="noselect">Estado de pago</p>
+                            <p class="noselect">Evolutivo</p>
+                        </div>
+                    </section>
+                    <div class="resumeStats">
+                        <div class="bannerResume">
+                            <div class="flexStats">
+                                <div>
+                                    <p class="txtcolorgray">Monto Dolares</p>
+                                    <p>00.00 $</p>
+                                </div>
+                                <div>
+                                    <p class="txtcolorgray">Monto Soles</p>
+                                    <p>00.00 $</p>
+                                </div>
+                            </div>
+                            <div class="flexStats">
+                                <div>
+                                    <p class="txtcolorgray">Base A</p>
+                                    <p>00.00 $</p>
+                                </div>
+                                <div>
+                                    <p class="txtcolorgray">Total</p>
+                                    <p>00.00 $</p>
+                                </div>
+                            </div>
+
+                            <div class="flexStats">
+                                <div class="generalStats">
+                                    <div>
+                                        <p class="txtcolorgray">Ventas</p>
+                                        <p>00.00 $</p>
+                                    </div>
+                                    <div>
+                                        <p class="txtcolorgray">Compras</p>
+                                        <p>00.00 $</p>
+                                    </div>
+                                    <div>
+                                        <p class="txtcolorgray">Pendiente</p>
+                                        <p>00.00 $</p>
+                                    </div>
+                                </div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- !! -->
+                </div>
+            </div>
+            <div class="paddistance transacciones">
+                <div class="bannerCotizacion">
+                    <div>
+                        <p class="txtcolorgray">Mostrando 1 - 20 resultados</p>
+                    </div>
+                    <div>
+                        <div><img src="" alt="" /></div>
+                        <div><img src="" alt="" /></div>
+                        <div><a id="addcotizacion">Nueva Cotizacion</a></div>
+                    </div>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Estado</th>
+                            <th></th>
+                            <th>Numero Cotizacion</th>
+                            <th>Empresa</th>
+                            <th>RUC</th>
+                            <th>Emision</th>
+                            <th>Tipo Agente</th>
+                            <th>Total</th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" name="" id="" /></td>
+                            <td>
+                                <p id="status" class="bgpagado" style="font-size: 12px">
+                                    PAGADO
+                                </p>
+                            </td>
+                            <td>
+                                <ion-icon class="txtcolorgraydark"
+                                          name="attach-outline"></ion-icon>
+                            </td>
+                            <td><p>T22400-07</p></td>
+                            <td><p>Ferreco</p></td>
+                            <td><p>20254819256</p></td>
+                            <td><p>07/05/2024 13:39</p></td>
+                            <td><p>TORQUE</p></td>
+                            <td><p>120</p></td>
+                            <td><ion-icon name="ellipsis-vertical-outline"></ion-icon></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
 </main>

@@ -1,0 +1,384 @@
+﻿body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.layout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "leftSide body rightSide"
+        "footer footer footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 15% 1fr auto;
+    gap: 8px;
+}
+
+.header {
+    grid-area: header;
+}
+
+.leftSide {
+    grid-area: leftSide;
+    padding: 2px 10px;
+    display: grid;
+    background: #f5f5f5;
+}
+
+.body {
+    grid-area: body;
+}
+
+.rightSide {
+    grid-area: rightSide;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+
+.itemlist {
+    display: flex;
+    flex-direction: column;
+    /* gap: 16px; */
+}
+
+    .itemlist ul > li {
+        border: none;
+        border-left: 2px solid transparent;
+        display: flex;
+        gap: 2px;
+        align-items: center;
+        height: 35px;
+    }
+
+        .itemlist ul > li:hover {
+            cursor: pointer;
+            background: whitesmoke;
+            border-left: 2px solid rgb(198, 194, 194);
+            ;
+        }
+
+        .itemlist ul > li:nth-child(1):hover {
+            background: rgb(212, 208, 208);
+            border-left: 2px solid rgb(198, 194, 194);
+            ;
+        }
+
+        .itemlist ul > li img {
+            width: 15px;
+        }
+
+.ordermenu, .enterprisebanner, .enterpriseitem, .bannerprofile, .bannerResume, .bannerCotizacion, .bannerCotizacion > div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.bannerCotizacion {
+    padding: 2px;
+}
+
+    .bannerCotizacion div:nth-child(1) {
+        flex: 1;
+        padding: 2px 0;
+    }
+
+.ordermenu {
+    flex: 1;
+}
+
+    .bannermenu ul, .ordermenu ul, .filterSearch {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+.enterprisebanner, .enterpriseitem {
+    align-items: center;
+}
+
+.enterpriseitem {
+    flex: 1;
+}
+
+.resumen {
+    display: flex;
+    flex-direction: column;
+}
+
+    .resumen section {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        height: 1.6em;
+    }
+
+.hideopt {
+    display: flex;
+    align-items: center;
+}
+
+    .hideopt:hover {
+        color: rgb(54, 53, 53);
+    }
+
+.bannerprofile {
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.filterSearch {
+    display: flex;
+    align-items: center;
+}
+
+    .filterSearch input {
+        border: 1px solid rgb(198, 194, 194);
+        height: 25px;
+        border-radius: 5px;
+    }
+
+.iconbgcolorgreen {
+    background: rgb(152, 226, 189);
+    height: 28px;
+    width: 28px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.txtcolorgray {
+    color: rgb(198, 194, 194);
+}
+
+.txtcolorblnk {
+    color: rgb(243, 236, 236);
+}
+
+.txtcolorgraydark {
+    color: rgb(123, 118, 118);
+}
+
+.iconcolor {
+    padding: 0 4px;
+}
+
+.txtTittle {
+    display: flex;
+    align-items: center;
+}
+
+    .txtTittle p {
+        flex: 1;
+        font-size: 2em;
+        font-weight: bolder;
+    }
+
+    .txtTittle ul {
+        display: flex;
+        gap: 10px;
+    }
+
+    .txtTittle li:hover {
+        color: rgb(123, 118, 118);
+    }
+
+.bannermenu, .bannermenu ul {
+    height: 35px;
+    align-items: center;
+}
+
+    .bannermenu ul li {
+        height: 32px;
+        display: flex;
+        padding: 0 5px;
+        justify-content: center;
+        align-items: end;
+        border: 3px solid transparent;
+    }
+
+        .bannermenu ul li:hover {
+            cursor: pointer;
+        }
+
+        .bannermenu ul li:nth-child(1) {
+            border-bottom: 3px solid rgb(69, 179, 157);
+        }
+
+            .bannermenu ul li:nth-child(1):hover {
+                border-bottom: 3px solid rgb(198, 194, 194);
+            }
+
+        .bannermenu ul li:nth-child(2):hover {
+            border-bottom: 3px solid rgb(198, 194, 194);
+        }
+
+        .bannermenu ul li:nth-child(3):hover {
+            border-bottom: 3px solid rgb(198, 194, 194);
+        }
+
+.filterMenu {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bannermenu {
+    border-bottom: 1px solid rgb(198, 194, 194);
+}
+
+.paddistance {
+    padding: 0 15px;
+}
+
+.dropPopitem {
+    border: 1px solid rgb(198, 194, 194);
+    border-radius: 5px;
+    display: inline-flex;
+    gap: 8px;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 100px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+    .dropPopitem:hover {
+        border: 1px solid rgb(123, 118, 118);
+    }
+
+.filtersitem {
+    flex: 1;
+}
+
+/* .resumeOption{
+
+} */
+.resumeOption p {
+    border: 1px solid #857c7c;
+    padding: 2px 5px;
+}
+
+.resumeOption, .resumeOption p {
+    padding: 4px;
+    display: inline-flex;
+}
+
+    .resumeOption p:nth-child(1) {
+        background: #857c7c;
+        color: white;
+    }
+
+    .resumeOption p:nth-child(2) {
+        min-width: 100px;
+    }
+
+.bannerResume {
+    height: 100px;
+}
+
+#addcotizacion {
+    height: 1.8em;
+    min-width: 100px;
+    padding: 4px;
+    border-radius: 3px;
+    background: rgb(97, 185, 97);
+    color: #f5f5f5;
+    transition: box-shadow 0.3s;
+    user-select: none;
+    cursor: pointer;
+}
+
+.noselect {
+    user-select: none;
+    cursor: pointer;
+}
+
+#addcotizacion:hover {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.transacciones {
+    margin: 15px 0;
+}
+
+.itemlist ul > li p {
+    font-size: 12px;
+}
+
+.resumeStats {
+    margin-top: 10px;
+    border: 1px solid rgb(204, 201, 201);
+}
+
+/* tablas */
+
+tr {
+    height: 1.6em;
+    gap: 2px;
+    border-bottom: 1px solid rgb(123, 118, 118);
+}
+
+th {
+    min-width: 80px;
+    color: #857c7c;
+    font-weight: bolder;
+}
+
+td {
+    padding: 2px;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+#status {
+    color: white;
+    padding: 2px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.bgvendido {
+    background: #d47272;
+}
+
+.bgpagado {
+    background: rgb(99, 216, 134);
+}
+
+
+.bgpendiente {
+    background: rgb(236, 198, 70);
+}
+
+.flexStats {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+    .flexStats:nth-child(2) {
+        border-right: 1px solid rgb(204, 201, 201);
+        border-left: 1px solid rgb(204, 201, 201);
+    }
+
+    .flexStats:nth-child(3) {
+        flex: 2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+.generalStats {
+    display: flex;
+    gap: 5PX;
+}

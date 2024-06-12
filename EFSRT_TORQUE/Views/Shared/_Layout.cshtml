@@ -1,40 +1,91 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <title>@ViewBag.Title - Express</title>
+    <link href="~/Content/inicio.css" rel="stylesheet" />
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+    <section class="layout">
+        <nav class="leftSide">
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+            <div class="leftSide">
+                <section class="bannerprofile">
+                    <ion-icon class="iconbgcolorgreen txtcolorblnk"
+                              name="analytics-outline"></ion-icon>
+                    <div>
+                        <p>Luis Palomino</p>
+                        <p>Agente</p>
+                    </div>
+                </section>
+                <section class="itemlist">
+                    <ul>
+                        <li>
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="document-text-outline"></ion-icon>
+                            <p>Vista Cotizaciones</p>
+                        </li>
+                        <li>
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="pie-chart-outline"></ion-icon>
+                            <p>Analitica</p>
+                        </li>
+                        <li>
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="calculator-outline"></ion-icon>
+                            <p>Informes contables</p>
+                        </li>
+                        <li>
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="document-text-outline"></ion-icon>
+                            <p>Doc. Comerciales</p>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <li>
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="help-circle-outline"></ion-icon>
+                            <p>Centro de ayuda</p>
+                        </li>
+                        <li>
+                            <ion-icon class="iconcolor txtcolorgraydark"
+                                      name="cog-outline"></ion-icon>
+                            <p>Configuracion</p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="enterprisebanner">
+                    <ion-icon class="iconbgcolorgreen txtcolorblnk"
+                              name="home-outline"></ion-icon>
+                    <div class="enterpriseitem">
+                        <div>
+                            <p>Torque</p>
+                            <p class="txtcolorgray">Empresa</p>
+                        </div>
+                    </div>
+                    <ion-icon class="txtcolorgraydark"
+                              class="iconcolor txtcolorgraydark"
+                              name="chevron-forward-outline"></ion-icon>
+                </section>
+            </div>
+
+        </nav>
+
+        @RenderBody()
+    </section>
+       
+
+
+
+
+        <script type="module"
+                src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+                src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
