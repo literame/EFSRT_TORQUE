@@ -12,82 +12,42 @@ namespace EFSRT_TORQUE.Controllers
 {
     public class ClientesController : Controller
     {
+        //para listar los clientes
+        IEnumerable<Clientes> clientes()
+        {
+            List<Clientes> prodTemporal = new List<Clientes>();
+            SqlConnection conn = null;
+            conn = new SqlConnection(
+                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                );
+            conn.Open();
+
+            //definimos un comando: SELECT * FROM Clientes , este listara todos los elementos de la bd
+            string query = "SELECT * FROM Clientes";
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                // Clientes() => sale de el nombre definido en el enumerable IEnumerable<Clientes>
+                prodTemporal.Add(new Clientes()
+                {
+                    ClienteID = rdr.GetInt32(0),
+                    Nombre = rdr.GetString(1),
+                    Telefono = rdr.GetString(1),
+                    Email = rdr.GetString(1),
+                    Direccion = rdr.GetString(1),
+                });
+}
+            rdr.Close();
+            conn.Close();
+            return prodTemporal;
+        }
         // GET: Clientes
+        //txt saludos
         public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Clientes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Clientes/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Clientes/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Clientes/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Clientes/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Clientes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Clientes/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        {   return View();
+       }
     }
 }
