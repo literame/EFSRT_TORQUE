@@ -14,7 +14,7 @@ namespace EFSRT_TORQUE.Controllers
     public class ProductosController : Controller
     {
         //para listar los productos
-        IEnumerable<Productos> products()
+        IEnumerable<Productos> productos()
         {
             List<Productos> prodTemporal = new List<Productos>();
             SqlConnection conn = null;

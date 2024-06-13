@@ -14,7 +14,7 @@ namespace EFSRT_TORQUE.Controllers
     public class ProveedoresController : Controller
     {
         //para listar los Proveedores
-        IEnumerable<Proveedores> products()
+        IEnumerable<Proveedores> proveedores()
         {
             List<Proveedores> prodTemporal = new List<Proveedores>();
             SqlConnection conn = null;
