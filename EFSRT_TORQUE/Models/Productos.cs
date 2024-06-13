@@ -8,10 +8,10 @@ namespace EFSRT_TORQUE.Models
 {
     public class Productos
     {
-        [Display (Name = "ID_RUC")] public int ProveedorID { get; set; }
-        [Display(Name = "NOMBRE")] public string Nombre { get; set; }
-        [Display(Name = "TELEFONO")] public string Telefono { get; set; }
-        [Display(Name = "EMAIL")] public string Email { get; set; }
-        [Display(Name = "DIRECCION")] public string Direccion { get; set; }
+        [Display(Name = "ID_PRODUCTO")] public int ProductoID { get; set; }
+        [Display(Name = "DESCRIPCION")] public string Descripcion { get; set; }
+        [Display(Name = "PRECIO")] public decimal Precio { get; set; }
+        [Display(Name = "STOCK")] public int Stock { get; set; }
+        [Display(Name = "ID_RUC")] public int ProveedorID { get; set; }
     }
 }
