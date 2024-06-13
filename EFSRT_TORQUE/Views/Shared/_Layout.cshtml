@@ -7,82 +7,85 @@
 
     <title>@ViewBag.Title - Express</title>
     <link href="~/Content/inicio.css" rel="stylesheet" />
+    <link href="~/Content/normalizacion.css" rel="stylesheet" />
 
 </head>
 <body>
     <section class="layout">
         <nav class="leftSide">
 
-            <div class="leftSide">
-                <section class="bannerprofile">
-                    <ion-icon class="iconbgcolorgreen txtcolorblnk"
-                              name="analytics-outline"></ion-icon>
-                    <div>
-                        <p>Luis Palomino</p>
-                        <p>Agente</p>
-                    </div>
-                </section>
-                <section class="itemlist">
-                    <ul>
-                        <li>
-                            <ion-icon class="iconcolor txtcolorgraydark"
-                                      name="document-text-outline"></ion-icon>
-                            <p>Vista Cotizaciones</p>
-                        </li>
-                        <li>
-                            <ion-icon class="iconcolor txtcolorgraydark"
-                                      name="pie-chart-outline"></ion-icon>
-                            <p>Analitica</p>
-                        </li>
-                        <li>
-                            <ion-icon class="iconcolor txtcolorgraydark"
-                                      name="calculator-outline"></ion-icon>
-                            <p>Informes contables</p>
-                        </li>
-                        <li>
-                            <ion-icon class="iconcolor txtcolorgraydark"
-                                      name="document-text-outline"></ion-icon>
-                            <p>Doc. Comerciales</p>
-                        </li>
-                    </ul>
+            <!-- !! -->
+            <section class="bannerprofile">
+                <ion-icon class="iconbgcolorgreen txtcolorblnk"
+                          name="analytics-outline"></ion-icon>
+                <div>
+                    <p>Luis Palomino</p>
+                    <p>Agente</p>
+                </div>
+            </section>
 
-                    <ul>
-                        <li>
-                            <ion-icon class="iconcolor txtcolorgraydark"
-                                      name="help-circle-outline"></ion-icon>
-                            <p>Centro de ayuda</p>
-                        </li>
-                        <li>
-                            <ion-icon class="iconcolor txtcolorgraydark"
-                                      name="cog-outline"></ion-icon>
-                            <p>Configuracion</p>
-                        </li>
-                    </ul>
-                </section>
-                <section class="enterprisebanner">
-                    <ion-icon class="iconbgcolorgreen txtcolorblnk"
-                              name="home-outline"></ion-icon>
-                    <div class="enterpriseitem">
-                        <div>
-                            <p>Torque</p>
-                            <p class="txtcolorgray">Empresa</p>
-                        </div>
+            <section class="itemlist">
+                <ul>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="document-text-outline"></ion-icon>
+                        <p>Vista Cotizaciones</p>
+                    </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="pie-chart-outline"></ion-icon>
+                        <p>Analitica</p>
+                    </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="calculator-outline"></ion-icon>
+                        <p>Informes contables</p>
+                    </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="document-text-outline"></ion-icon>
+                        <p>Doc. Comerciales</p>
+                    </li>
+                </ul>
+
+                <ul>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="help-circle-outline"></ion-icon>
+                        <p>Centro de ayuda</p>
+                    </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="cog-outline"></ion-icon>
+                        <p>Configuracion</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="enterprisebanner">
+                <ion-icon class="iconbgcolorgreen txtcolorblnk"
+                          name="home-outline"></ion-icon>
+                <div class="enterpriseitem">
+                    <div>
+                        <p>Torque</p>
+                        <p class="txtcolorgray">Empresa</p>
                     </div>
-                    <ion-icon class="txtcolorgraydark"
-                              class="iconcolor txtcolorgraydark"
-                              name="chevron-forward-outline"></ion-icon>
-                </section>
-            </div>
+                </div>
+                <ion-icon class="txtcolorgraydark"
+                          class="iconcolor txtcolorgraydark"
+                          name="chevron-forward-outline"></ion-icon>
+            </section>
+
 
         </nav>
-
+        
         @RenderBody()
     </section>
        
 
 
 
-
+    <script src="~/Scripts/controls/ocultarDiv.js"></script>
         <script type="module"
                 src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule

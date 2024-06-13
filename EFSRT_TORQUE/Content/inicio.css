@@ -23,9 +23,11 @@
 
 .leftSide {
     grid-area: leftSide;
-    padding: 2px 10px;
-    display: grid;
+    padding: 2px 15px;
     background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    gap: 5px
 }
 
 .body {
@@ -42,6 +44,7 @@
 
 
 .itemlist {
+    flex:1;
     display: flex;
     flex-direction: column;
     /* gap: 16px; */
@@ -58,17 +61,16 @@
 
         .itemlist ul > li:hover {
             cursor: pointer;
-            background: whitesmoke;
+            background: rgb(212, 208, 208);
             border-left: 2px solid rgb(198, 194, 194);
-            ;
         }
-
+        /*
         .itemlist ul > li:nth-child(1):hover {
             background: rgb(212, 208, 208);
             border-left: 2px solid rgb(198, 194, 194);
-            ;
+            
         }
-
+*/
         .itemlist ul > li img {
             width: 15px;
         }
@@ -281,8 +283,8 @@
 .bannerResume {
     height: 100px;
 }
-
-#addcotizacion {
+/*hello world*/
+.addcotizacion {
     height: 1.8em;
     min-width: 100px;
     padding: 4px;

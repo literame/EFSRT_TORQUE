@@ -5,8 +5,6 @@
 
 <main class="body">
 
-
-        <div class="body">
             <div class="txtTittle">
                 <p class="paddistance">Cotizaciones</p>
                 <ul>
@@ -67,14 +65,14 @@
                         <div class="hideopt">
                             <ion-icon class="iconcolor txtcolorgraydark"
                                       name="eye-off-outline"></ion-icon>
-                            <p class="noselect">ocultar el resumen</p>
+                            <p class="noselect" onclick="toggleDiv('estadisticas')">ocultar el resumen</p>
                         </div>
                         <div class="resumeOption">
                             <p class="noselect">Estado de pago</p>
                             <p class="noselect">Evolutivo</p>
                         </div>
                     </section>
-                    <div class="resumeStats">
+                    <div class="resumeStats" id="estadisticas">
                         <div class="bannerResume">
                             <div class="flexStats">
                                 <div>
@@ -116,7 +114,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- !! -->
+                    <!-- !! --> <hr />
                 </div>
             </div>
             <div class="paddistance transacciones">
@@ -127,7 +125,13 @@
                     <div>
                         <div><img src="" alt="" /></div>
                         <div><img src="" alt="" /></div>
-                        <div><a id="addcotizacion">Nueva Cotizacion</a></div>
+                        <!-- !! -->
+                        <div>
+                            <a>
+
+                                @Html.ActionLink("Nueva Cotizacion", "Index", "Home", new { area = "" }, new { @class = "addcotizacion" })
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -166,6 +170,6 @@
                     </table>
                 </div>
             </div>
-        </div>
+        
 
 </main>
