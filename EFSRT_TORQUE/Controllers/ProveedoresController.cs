@@ -7,87 +7,51 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using EFSRT_TORQUE.Models;
+using System.Drawing;
 
 namespace EFSRT_TORQUE.Controllers
 {
     public class ProveedoresController : Controller
     {
+        //para listar los Proveedores
+        IEnumerable<Proveedores> products()
+        {
+            List<Proveedores> prodTemporal = new List<Proveedores>();
+            SqlConnection conn = null;
+            conn = new SqlConnection(
+                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                );
+            conn.Open();
+
+            //definimos un comando: SELECT * FROM Proveedores , este listara todos los elementos de la bd
+            string query = "SELECT * FROM Proveedores";
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                // Proveedores() => sale de el nombre definido en el enumerable IEnumerable<Proveedores>
+                prodTemporal.Add(new Proveedores()
+                {
+                    ProveedorID = rdr.GetInt32(0),
+                    Nombre = rdr.GetString(1),
+                    Email = rdr.GetString(2),
+                    Telefono = rdr.GetString(1),
+                    Direccion = rdr.GetString(1),
+                });
+            }
+
+            rdr.Close();
+            conn.Close();
+            return prodTemporal;
+        }
+
         // GET: Proveedores
+        //txt saludos
         public ActionResult Index()
         {
             return View();
-        }
-
-        // GET: Proveedores/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Proveedores/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Proveedores/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Proveedores/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Proveedores/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Proveedores/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Proveedores/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }

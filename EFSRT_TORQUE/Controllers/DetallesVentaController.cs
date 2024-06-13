@@ -12,82 +12,43 @@ namespace EFSRT_TORQUE.Controllers
 {
     public class DetallesVentaController : Controller
     {
-        // GET: DetallesVenta
+        //para listar los Detalles de Venta
+        IEnumerable<DetallesVenta> detallesventa()
+        {
+            List<DetallesVenta> prodTemporal = new List<DetallesVenta>();
+            SqlConnection conn = null;
+            conn = new SqlConnection(
+                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                );
+            conn.Open();
+
+            //definimos un comando: SELECT * FROM Detalles de Venta , este listara todos los elementos de la bd
+            string query = "SELECT * FROM Detalles de Venta";
+            SqlCommand cmd = new SqlCommand(query, conn);
+
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                // DetallesVenta() => sale de el nombre definido en el enumerable IEnumerable<DetallesVenta>
+                prodTemporal.Add(new DetallesVenta()
+                {
+                    DetalleID = rdr.GetInt32(0),
+                    VentaID = rdr.GetInt32(0),
+                    ProductoID = rdr.GetInt32(0),
+                    Cantidad = rdr.GetInt32(0),
+                    PrecioVenta = rdr.GetDecimal(1),
+                });
+            }
+            rdr.Close();
+            conn.Close();
+            return prodTemporal;
+        }
+        // GET: Detalles de Venta
+        //txt saludos
         public ActionResult Index()
         {
             return View();
-        }
-
-        // GET: DetallesVenta/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: DetallesVenta/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: DetallesVenta/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DetallesVenta/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: DetallesVenta/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DetallesVenta/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: DetallesVenta/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
