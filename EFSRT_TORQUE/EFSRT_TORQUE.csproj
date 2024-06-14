@@ -143,7 +143,6 @@
   <ItemGroup>
     <Content Include="Content\inicio.css" />
     <Content Include="Content\normalizacion.css" />
-    <Content Include="Controllers\HOLA_GRUPO_ESTEF.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\controls\ocultarDiv.js" />
@@ -166,13 +165,14 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\DetallesCompra\" />
     <Folder Include="Views\DetallesVenta\" />
-    <Folder Include="Views\Productos\" />
-    <Folder Include="Views\Proveedores\" />
-    <Folder Include="Views\Ventas\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\Compras\ListarCompras.cshtml" />
+    <Content Include="Views\Clientes\ListarClientes.cshtml" />
+    <Content Include="Views\Productos\ListarProductos.cshtml" />
+    <Content Include="Views\Proveedores\ListarProveedores.cshtml" />
+    <Content Include="Views\Ventas\ListarVentas.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
