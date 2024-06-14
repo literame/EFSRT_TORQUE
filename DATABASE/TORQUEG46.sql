@@ -1,9 +1,9 @@
 -- Crear la base de datos
-CREATE DATABASE TorqueG46;
+CREATE DATABASE TorqueG64;
 GO
 
 -- Seleccionar la base de datos recién creada
-USE TorqueG46;
+USE TorqueG64;
 GO
 
 --TABLAS
@@ -18,8 +18,16 @@ CREATE TABLE Proveedores (
 );
 GO
 
-
-
+-- Tabla Productos
+CREATE TABLE Productos (
+    ProductoID INT IDENTITY(1,1) PRIMARY KEY,
+    Descripcion VARCHAR(100) NULL,
+    Precio DECIMAL(10, 2) NOT NULL,
+    Stock INT NOT NULL CHECK (Stock >= 0),
+    ProveedorID INT NULL,
+    CONSTRAINT FK_Productos_Proveedores FOREIGN KEY (ProveedorID) REFERENCES Proveedores(ProveedorID)
+);
+GO
 
 -- Crear la tabla Clientes sin la columna de identidad para ClienteID
 CREATE TABLE Clientes (
@@ -31,6 +39,8 @@ CREATE TABLE Clientes (
 );
 GO
 
+---Table Ventas
+
 CREATE TABLE Ventas (
     VentaID INT IDENTITY(1,1) PRIMARY KEY,
     Fecha DATE NOT NULL,
@@ -40,19 +50,8 @@ CREATE TABLE Ventas (
 );
 GO
 
--- Tabla Productos
-
-CREATE TABLE Productos (
-    ProductoID INT IDENTITY(1,1) PRIMARY KEY,
-    Descripcion VARCHAR(100) NULL,
-    Precio DECIMAL(10, 2) NOT NULL,
-    Stock INT NOT NULL CHECK (Stock >= 0),
-    ProveedorID INT NULL,
-    CONSTRAINT FK_Productos_Proveedores FOREIGN KEY (ProveedorID) REFERENCES Proveedores(ProveedorID)
-);
-GO
-
 -- Tabla DetallesVenta
+
 CREATE TABLE DetallesVenta (
     DetalleID INT IDENTITY(1,1) PRIMARY KEY,
     VentaID INT NOT NULL,
@@ -86,19 +85,11 @@ CREATE TABLE DetallesCompra (
 );
 GO
 
-
-
-
-
-
-
-
-
 -- ingresar registros para cada tabla
 
 -- Insertar registros en la tabla Proveedores
 SET IDENTITY_INSERT Proveedores ON;
-INSERT INTO Proveedores (ProveedorID, Nombre, Telefono, Email, Direccion)
+INSERT INTO Proveedores (ProveedorID,Nombre, Telefono, Email, Direccion)
 VALUES 
 (1, 'Proveedor A', '123456789', 'proveedorA@example.com', 'Calle 1'),
 (2, 'Proveedor B', '987654321', 'proveedorB@example.com', 'Calle 2'),
@@ -110,7 +101,6 @@ SET IDENTITY_INSERT Proveedores OFF;
 GO
 
 SELECT * FROM Proveedores
-
 
 -- Insertar registros en la tabla Productos
 SET IDENTITY_INSERT Productos ON;
@@ -152,7 +142,6 @@ VALUES
 
 select * from Ventas
 
-
 -- Insertar registros en la tabla DetallesVenta
 INSERT INTO DetallesVenta (VentaID, ProductoID, Cantidad, PrecioVenta)
 VALUES 
@@ -165,7 +154,6 @@ VALUES
 
 select * from DetallesVenta
 
-
 -- Insertar registros en la tabla Compras
 INSERT INTO Compras (Fecha, ProveedorID, Total)
 VALUES 
@@ -177,7 +165,6 @@ VALUES
 ('2024-06-06', 6, 450.00);
 
 select * from Compras
-
 
 -- Insertar registros en la tabla DetallesCompra
 INSERT INTO DetallesCompra (CompraID, ProductoID, Cantidad, PrecioCompra)
