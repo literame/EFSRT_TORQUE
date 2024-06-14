@@ -10,7 +10,7 @@ namespace EFSRT_TORQUE.Models
     {
         [Display(Name = "ID_VENTA")] public int VentaID { get; set; }
         [Display(Name = "FECHA")] public DateTime Fecha { get; set; }
-        [Display(Name = "ID_RUC")] public int ClienteID { get; set; }
+        [Display(Name = "ID_RUC")] public string ClienteID { get; set; }
         [Display(Name = "TOTAL")] public decimal Total { get; set; }
     }
 }
