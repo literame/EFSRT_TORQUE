@@ -35,8 +35,8 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     CompraID = rdr.GetInt32(0),
                     Fecha = rdr.GetDateTime(1),
-                    ProveedorID = rdr.GetInt32(0),
-                    Total = rdr.GetDecimal(1),
+                    ProveedorID = rdr.GetInt32(2),
+                    Total = rdr.GetDecimal(3),
                 });
             }
             rdr.Close();

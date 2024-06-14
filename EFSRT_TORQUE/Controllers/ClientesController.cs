@@ -35,9 +35,9 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     ClienteID = rdr.GetInt32(0),
                     Nombre = rdr.GetString(1),
-                    Telefono = rdr.GetString(1),
-                    Email = rdr.GetString(1),
-                    Direccion = rdr.GetString(1),
+                    Telefono = rdr.GetString(2),
+                    Email = rdr.GetString(3),
+                    Direccion = rdr.GetString(4),
                 });
 }
             rdr.Close();

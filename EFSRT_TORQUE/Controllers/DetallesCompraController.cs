@@ -34,10 +34,10 @@ namespace EFSRT_TORQUE.Controllers
                 dcompTemporal.Add(new DetallesCompra()
                 {
                     DetalleID = rdr.GetInt32(0),
-                    CompraID = rdr.GetInt32(0),
-                    ProductoID = rdr.GetInt32(0),
-                    Cantidad = rdr.GetInt32(0),
-                    PrecioCompra = rdr.GetDecimal(1),
+                    CompraID = rdr.GetInt32(1),
+                    ProductoID = rdr.GetInt32(2),
+                    Cantidad = rdr.GetInt32(3),
+                    PrecioCompra = rdr.GetDecimal(4),
                 });
             }
             rdr.Close();

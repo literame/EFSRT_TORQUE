@@ -35,9 +35,9 @@ namespace EFSRT_TORQUE.Controllers
                 ventasTemporal.Add(new Ventas()
                 {
                     VentaID = rdr.GetInt32(0),
-                    Fecha = rdr.GetDateTime(0),
-                    ClienteID = rdr.GetInt32(0),
-                    Total = rdr.GetDecimal(1),
+                    Fecha = rdr.GetDateTime(1),
+                    ClienteID = rdr.GetInt32(2),
+                    Total = rdr.GetDecimal(3),
                 });
             }
 

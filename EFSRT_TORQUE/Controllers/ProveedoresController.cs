@@ -37,8 +37,8 @@ namespace EFSRT_TORQUE.Controllers
                     ProveedorID = rdr.GetInt32(0),
                     Nombre = rdr.GetString(1),
                     Email = rdr.GetString(2),
-                    Telefono = rdr.GetString(1),
-                    Direccion = rdr.GetString(1),
+                    Telefono = rdr.GetString(3),
+                    Direccion = rdr.GetString(4),
                 });
             }
 
