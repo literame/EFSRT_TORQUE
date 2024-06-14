@@ -14,7 +14,7 @@ namespace EFSRT_TORQUE.Controllers
     public class ProductosController : Controller
     {
         //para listar los productos
-        IEnumerable<Productos> products()
+        IEnumerable<Productos> productos()
         {
             List<Productos> prodTemporal = new List<Productos>();
             SqlConnection conn = null;
@@ -59,7 +59,7 @@ namespace EFSRT_TORQUE.Controllers
         //txt saludos
         public ActionResult Index()
         {
-            return View(products());
+            return View(productos());
         }
 
 
