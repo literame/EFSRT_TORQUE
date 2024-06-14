@@ -143,6 +143,7 @@
   <ItemGroup>
     <Content Include="Content\inicio.css" />
     <Content Include="Content\normalizacion.css" />
+    <Content Include="Controllers\HOLA_GRUPO_ESTEF.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\controls\ocultarDiv.js" />
