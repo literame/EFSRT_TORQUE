@@ -18,7 +18,7 @@ namespace EFSRT_TORQUE.Controllers
             List<Compras> compTemporal = new List<Compras>();
             SqlConnection conn = null;
             conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
                 );
             conn.Open();
 

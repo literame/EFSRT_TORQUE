@@ -19,7 +19,7 @@ namespace EFSRT_TORQUE.Controllers
             List<Ventas> ventasTemporal = new List<Ventas>();
             SqlConnection conn = null;
             conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
                 );
             conn.Open();
 

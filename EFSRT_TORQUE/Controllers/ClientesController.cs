@@ -18,7 +18,7 @@ namespace EFSRT_TORQUE.Controllers
             List<Clientes> cliTemporal = new List<Clientes>();
             SqlConnection conn = null;
             conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
                 );
             conn.Open();
 

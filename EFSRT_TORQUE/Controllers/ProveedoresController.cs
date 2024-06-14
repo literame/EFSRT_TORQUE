@@ -19,7 +19,7 @@ namespace EFSRT_TORQUE.Controllers
             List<Proveedores> provTemporal = new List<Proveedores>();
             SqlConnection conn = null;
             conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
+                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
                 );
             conn.Open();
 

@@ -13,7 +13,7 @@
 <body>
     <section class="layout">
 
-        @Html.ActionLink("ir a listar producto", "ListarProductos", "Productos", new { area = "" }, new { @class = "addcotizacion" })
+       
 
         <nav class="leftSide">
 
@@ -32,13 +32,45 @@
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="document-text-outline"></ion-icon>
-                        <p>Vista Cotizaciones</p>
+                        @Html.ActionLink("Vista Cotizaciones", "Index", "Home")
+
                     </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="file-tray-full-outline"></ion-icon>
+                        @Html.ActionLink("Listar Productos", "ListarProductos", "Productos")
+                    </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="file-tray-full-outline"></ion-icon>
+                        @Html.ActionLink("Listar Proveedores", "ListarProveedores", "Proveedores")
+                    </li>
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="file-tray-full-outline"></ion-icon>
+                        @Html.ActionLink("Listar Clientes", "ListarClientes", "Clientes")
+                    </li>
+
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="file-tray-full-outline"></ion-icon>
+                        @Html.ActionLink("Listar Compras", "ListarCompras", "Compras")
+                    </li>
+
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="file-tray-full-outline"></ion-icon>
+                        @Html.ActionLink("Listar Ventas", "ListarVentas", "Ventas")
+                    </li>
+
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="pie-chart-outline"></ion-icon>
                         <p>Analitica</p>
                     </li>
+
+
+
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="calculator-outline"></ion-icon>
