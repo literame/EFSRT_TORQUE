@@ -45,7 +45,7 @@ namespace EFSRT_TORQUE.Controllers
         }
         // GET: Compras
         //txt saludos
-        public ActionResult Index()
+        public ActionResult ListarCompras()
         {
             return View(compras());
         }

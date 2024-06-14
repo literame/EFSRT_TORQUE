@@ -49,7 +49,7 @@ namespace EFSRT_TORQUE.Controllers
 
         // GET: Proveedores
         //txt saludos
-        public ActionResult Index()
+        public ActionResult ListarProveedores()
         {
             return View(proveedor());
         }
