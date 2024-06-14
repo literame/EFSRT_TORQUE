@@ -14,9 +14,9 @@ namespace EFSRT_TORQUE.Controllers
     public class ProveedoresController : Controller
     {
         //para listar los Proveedores
-        IEnumerable<Proveedores> products()
+        IEnumerable<Proveedores> proveedor()
         {
-            List<Proveedores> prodTemporal = new List<Proveedores>();
+            List<Proveedores> provTemporal = new List<Proveedores>();
             SqlConnection conn = null;
             conn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
@@ -32,7 +32,7 @@ namespace EFSRT_TORQUE.Controllers
             while (rdr.Read())
             {
                 // Proveedores() => sale de el nombre definido en el enumerable IEnumerable<Proveedores>
-                prodTemporal.Add(new Proveedores()
+                provTemporal.Add(new Proveedores()
                 {
                     ProveedorID = rdr.GetInt32(0),
                     Nombre = rdr.GetString(1),
@@ -44,14 +44,14 @@ namespace EFSRT_TORQUE.Controllers
 
             rdr.Close();
             conn.Close();
-            return prodTemporal;
+            return provTemporal;
         }
 
         // GET: Proveedores
         //txt saludos
         public ActionResult Index()
         {
-            return View();
+            return View(proveedor());
         }
     }
 }

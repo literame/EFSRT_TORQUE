@@ -59,7 +59,7 @@ namespace EFSRT_TORQUE.Controllers
         //txt saludos
         public ActionResult Index()
         {
-            return View();
+            return View(products());
         }
 
 

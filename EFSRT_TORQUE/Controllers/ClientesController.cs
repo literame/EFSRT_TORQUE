@@ -15,7 +15,7 @@ namespace EFSRT_TORQUE.Controllers
         //para listar los clientes
         IEnumerable<Clientes> clientes()
         {
-            List<Clientes> prodTemporal = new List<Clientes>();
+            List<Clientes> cliTemporal = new List<Clientes>();
             SqlConnection conn = null;
             conn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
@@ -31,7 +31,7 @@ namespace EFSRT_TORQUE.Controllers
             while (rdr.Read())
             {
                 // Clientes() => sale de el nombre definido en el enumerable IEnumerable<Clientes>
-                prodTemporal.Add(new Clientes()
+                cliTemporal.Add(new Clientes()
                 {
                     ClienteID = rdr.GetInt32(0),
                     Nombre = rdr.GetString(1),
@@ -42,12 +42,12 @@ namespace EFSRT_TORQUE.Controllers
 }
             rdr.Close();
             conn.Close();
-            return prodTemporal;
+            return cliTemporal;
         }
         // GET: Clientes
         //txt saludos
         public ActionResult Index()
-        {   return View();
+        {   return View(clientes());
        }
     }
 }

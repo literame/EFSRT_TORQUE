@@ -15,7 +15,7 @@ namespace EFSRT_TORQUE.Controllers
         //para listar los Detalles de compra
         IEnumerable<DetallesCompra> detallescompra()
         {
-            List<DetallesCompra> prodTemporal = new List<DetallesCompra>();
+            List<DetallesCompra> dcompTemporal = new List<DetallesCompra>();
             SqlConnection conn = null;
             conn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
@@ -23,7 +23,7 @@ namespace EFSRT_TORQUE.Controllers
             conn.Open();
 
             //definimos un comando: SELECT * FROM Detalles de Compra , este listara todos los elementos de la bd
-            string query = "SELECT * FROM Detalles de Compra";
+            string query = "SELECT * FROM DetallesCompra";
             SqlCommand cmd = new SqlCommand(query, conn);
 
             SqlDataReader rdr = cmd.ExecuteReader();
@@ -31,7 +31,7 @@ namespace EFSRT_TORQUE.Controllers
             while (rdr.Read())
             {
                 // DetallesCompra() => sale de el nombre definido en el enumerable IEnumerable<DetallesCompra>
-                prodTemporal.Add(new DetallesCompra()
+                dcompTemporal.Add(new DetallesCompra()
                 {
                     DetalleID = rdr.GetInt32(0),
                     CompraID = rdr.GetInt32(0),
@@ -42,13 +42,13 @@ namespace EFSRT_TORQUE.Controllers
             }
             rdr.Close();
             conn.Close();
-            return prodTemporal;
+            return dcompTemporal;
         }
         // GET: Detalles de Compra
         //txt saludos
         public ActionResult Index()
         {
-            return View();
+            return View(detallescompra());
         }
     }
 }

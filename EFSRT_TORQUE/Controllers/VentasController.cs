@@ -16,7 +16,7 @@ namespace EFSRT_TORQUE.Controllers
         //para listar los Ventas
         IEnumerable<Ventas> ventas()
         {
-            List<Ventas> prodTemporal = new List<Ventas>();
+            List<Ventas> ventasTemporal = new List<Ventas>();
             SqlConnection conn = null;
             conn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["cadena"].ConnectionString
@@ -32,7 +32,7 @@ namespace EFSRT_TORQUE.Controllers
             while (rdr.Read())
             {
                 // Ventas() => sale de el nombre definido en el enumerable IEnumerable<Ventas>
-                prodTemporal.Add(new Ventas()
+                ventasTemporal.Add(new Ventas()
                 {
                     VentaID = rdr.GetInt32(0),
                     Fecha = rdr.GetDateTime(0),
@@ -43,14 +43,14 @@ namespace EFSRT_TORQUE.Controllers
 
             rdr.Close();
             conn.Close();
-            return prodTemporal;
+            return ventasTemporal;
         }
 
         // GET: Ventas
         //txt saludos
         public ActionResult Index()
         {
-            return View();
+            return View(ventas());
         }
 
     }
