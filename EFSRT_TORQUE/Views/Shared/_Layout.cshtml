@@ -12,8 +12,11 @@
 </head>
 <body>
     <section class="layout">
+
+        @Html.ActionLink("ir a listar producto", "ListarProductos", "Productos", new { area = "" }, new { @class = "addcotizacion" })
+
         <nav class="leftSide">
-            
+
             <!-- !! -->
             <section class="bannerprofile">
                 <ion-icon class="iconbgcolorgreen txtcolorblnk"
@@ -77,13 +80,10 @@
 
 
         </nav>
-        
+
         @RenderBody()
     </section>
-       
-
-
-
+      
     <script src="~/Scripts/controls/ocultarDiv.js"></script>
         <script type="module"
                 src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
