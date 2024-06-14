@@ -33,7 +33,7 @@ namespace EFSRT_TORQUE.Controllers
                 // Clientes() => sale de el nombre definido en el enumerable IEnumerable<Clientes>
                 cliTemporal.Add(new Clientes()
                 {
-                    ClienteID = rdr.GetInt32(0),
+                    ClienteID = rdr.GetString(0),
                     Nombre = rdr.GetString(1),
                     Telefono = rdr.GetString(2),
                     Email = rdr.GetString(3),

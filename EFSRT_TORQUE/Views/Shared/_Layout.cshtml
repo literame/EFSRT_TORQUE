@@ -32,35 +32,38 @@
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="document-text-outline"></ion-icon>
-                        @Html.ActionLink("Vista Cotizaciones", "Index", "Home")
+                        @Html.ActionLink("Vista Cotizaciones", "Index", "Home", null, new { @class = "itmList", id = "homeLink" })
 
                     </li>
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Productos", "ListarProductos", "Productos")
+                        @Html.ActionLink("Listar Productos", "ListarProductos", "Productos", null, new { @class = "itmList", id = "productoLink" })
                     </li>
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Proveedores", "ListarProveedores", "Proveedores")
+                        @Html.ActionLink("Listar Proveedores", "ListarProveedores", "Proveedores", null, new { @class = "itmList", id = "proveedLink" })
                     </li>
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Clientes", "ListarClientes", "Clientes")
-                    </li>
-
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Compras", "ListarCompras", "Compras")
+                        @Html.ActionLink("Listar Clientes", "ListarClientes", "Clientes", null, new { @class = "itmList", id = "clientLink" })
                     </li>
 
                     <li>
                         <ion-icon class="iconcolor txtcolorgraydark"
                                   name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Ventas", "ListarVentas", "Ventas")
+                        @Html.ActionLink("Listar Compras", "ListarCompras", "Compras", null, new { @class = "itmList", id = "compraLink" })
+
+                    </li>
+
+                    <li>
+                        <ion-icon class="iconcolor txtcolorgraydark"
+                                  name="file-tray-full-outline"></ion-icon>
+                        @Html.ActionLink("Listar Ventas", "ListarVentas", "Ventas", null, new { @class = "itmList", id = "ventaLink" })
+
+
                     </li>
 
                     <li>

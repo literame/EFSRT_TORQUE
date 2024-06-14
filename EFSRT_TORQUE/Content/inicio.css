@@ -384,3 +384,11 @@ td {
     display: flex;
     gap: 5PX;
 }
+
+
+.itmList {
+    text-decoration: none;
+    list-style: none;
+    font-family: "Roboto", sans-serif;
+    color:black;
+}
