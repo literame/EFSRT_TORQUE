@@ -16,7 +16,7 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Clientes> clientes()
         {
             List<Clientes> cliTemporal = new List<Clientes>();
-            SqlConnection conn = null;
+            SqlConnection
             conn = new SqlConnection(
                 ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
                 );
@@ -46,8 +46,62 @@ namespace EFSRT_TORQUE.Controllers
         }
         // GET: Clientes
         //txt saludos
+
+
+        string AgregarCliente(Clientes reg)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["cadena"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_agregarCliente", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@clienteId", reg.ClienteID);
+                    cmd.Parameters.AddWithValue("@nombre", reg.Nombre);
+                    cmd.Parameters.AddWithValue("@telefono", reg.Telefono);
+                    cmd.Parameters.AddWithValue("@email", reg.Email);
+                    cmd.Parameters.AddWithValue("@direccion", reg.Direccion);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha insertado {i} socios";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message; //si hay error muestra mensaje del error 
+                }
+                finally
+                {
+                    conn.Close();  
+                }
+                return mensaje; 
+            }
+        }
+
         public ActionResult ListarClientes()
-        {   return View(clientes());
-       }
+        //es como decir un index de la pagina con la lista de cleintes
+        {
+            return View(clientes());
+        }
+
+        public ActionResult CreateCliente()
+        {
+            return View(new Clientes());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Clientes reg)
+        {
+            // recibe los datos en reg, ejecuto y almaceno en un ViewBag
+            ViewBag.mensaje = AgregarCliente(reg);
+            //refrescar la vista
+            return View(reg);
+        }
+
+
+
+
+
     }
 }
