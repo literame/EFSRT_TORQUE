@@ -141,8 +141,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\clientes\styleClientes.css" />
+    <Content Include="Content\compras\StyleCompras.css" />
     <Content Include="Content\inicio.css" />
     <Content Include="Content\normalizacion.css" />
+    <Content Include="Content\productos\StyleProductos.css" />
+    <Content Include="Content\proveedores\styleProveedores.css" />
+    <Content Include="Content\ventas\styleVentas.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\controls\ocultarDiv.js" />
@@ -173,8 +178,9 @@
     <Content Include="Views\Productos\ListarProductos.cshtml" />
     <Content Include="Views\Proveedores\ListarProveedores.cshtml" />
     <Content Include="Views\Ventas\ListarVentas.cshtml" />
-    <Content Include="Views\Productos\Create.cshtml" />
     <Content Include="Views\Clientes\CreateCliente.cshtml" />
+    <Content Include="Views\Compras\CreateCompra.cshtml" />
+    <Content Include="Views\Productos\CreateProducto.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

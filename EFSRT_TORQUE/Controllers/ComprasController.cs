@@ -51,12 +51,54 @@ namespace EFSRT_TORQUE.Controllers
         }
 
 
+        string AgregarCompra(Compras reg)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_agregarCompra", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@clienteId", reg.CompraID);
+                    cmd.Parameters.AddWithValue("@nombre", reg.Fecha);
+                    cmd.Parameters.AddWithValue("@telefono", reg.ProveedorID);
+                    cmd.Parameters.AddWithValue("@email", reg.Total);
 
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha insertado {i} socios";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message; //si hay error muestra mensaje del error 
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
 
+        public ActionResult CreateCompra()
+        {
+            return View(new Compras());
+        }
+
+        [HttpPost]
+        public ActionResult Create(Compras reg)
+        {
+            // recibe los datos en reg, ejecuto y almaceno en un ViewBag
+            ViewBag.mensaje = AgregarCompra(reg);
+            //refrescar la vista
+            return View(reg);
+        }
 
 
 
 
     }
+
 }
 

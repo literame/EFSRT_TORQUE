@@ -49,14 +49,14 @@ namespace EFSRT_TORQUE.Controllers
         }
 
         // GET: Productos/Create
-        public ActionResult Create()
+        public ActionResult CreateProducto()
         {
             return View();
         }
 
         // POST: Productos/Create
         [HttpPost]
-        public ActionResult Create(Productos producto)
+        public ActionResult CreateProducto(Productos producto)
         {
             try
             {

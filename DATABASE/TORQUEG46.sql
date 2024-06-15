@@ -38,7 +38,7 @@ CREATE TABLE Clientes (
     Direccion VARCHAR(255) NULL
 );
 GO
-
+ select * from Clientes
 ---Table Ventas
 
 CREATE TABLE Ventas (
@@ -182,7 +182,6 @@ select * from DetallesCompra
 
 
 
-
 CREATE PROCEDURE usp_agregarCliente
     @clienteId NVARCHAR(50),
     @nombre NVARCHAR(100),
@@ -194,3 +193,6 @@ BEGIN
     INSERT INTO Clientes (ClienteID, Nombre, Telefono, Email, Direccion)
     VALUES (@clienteId, @nombre, @telefono, @email, @direccion);
 END
+
+
+select * from Clientes
