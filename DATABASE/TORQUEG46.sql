@@ -177,3 +177,20 @@ VALUES
 (5, 6, 3, 180.00);
 
 select * from DetallesCompra
+
+
+
+
+
+
+CREATE PROCEDURE usp_agregarCliente
+    @clienteId NVARCHAR(50),
+    @nombre NVARCHAR(100),
+    @telefono NVARCHAR(20),
+    @email NVARCHAR(100),
+    @direccion NVARCHAR(200)
+AS
+BEGIN
+    INSERT INTO Clientes (ClienteID, Nombre, Telefono, Email, Direccion)
+    VALUES (@clienteId, @nombre, @telefono, @email, @direccion);
+END

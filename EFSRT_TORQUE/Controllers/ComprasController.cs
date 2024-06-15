@@ -49,6 +49,14 @@ namespace EFSRT_TORQUE.Controllers
         {
             return View(compras());
         }
+
+
+
+
+
+
+
+
     }
 }
 

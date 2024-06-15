@@ -51,7 +51,7 @@ namespace EFSRT_TORQUE.Controllers
         string AgregarCliente(Clientes reg)
         {
             string mensaje = "";
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["cadena"].ConnectionString))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
                 try
                 {
