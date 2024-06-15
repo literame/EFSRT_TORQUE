@@ -53,5 +53,53 @@ namespace EFSRT_TORQUE.Controllers
             return View(ventas());
         }
 
+
+
+        string AgregarProveedores(Ventas reg)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_agregarVentas", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ventaId", reg.VentaID);
+                    cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
+                    cmd.Parameters.AddWithValue("@clienteId", reg.ClienteID);
+                    cmd.Parameters.AddWithValue("@total", reg.Total);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha insertado {i} socios";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message; //si hay error muestra mensaje del error 
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
+
+        public ActionResult CreateVentas()
+        {
+            return View(new Ventas());
+        }
+
+        [HttpPost]
+        public ActionResult CreateVentas(Ventas reg)
+        {
+            // recibe los datos en reg, ejecuto y almaceno en un ViewBag
+            ViewBag.mensaje = AgregarProveedores(reg);
+            //refrescar la vista
+            return View(reg);
+        }
+
+
+
     }
 }

@@ -62,9 +62,9 @@ namespace EFSRT_TORQUE.Controllers
                     SqlCommand cmd = new SqlCommand("usp_agregarCompra", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@clienteId", reg.CompraID);
-                    cmd.Parameters.AddWithValue("@nombre", reg.Fecha);
-                    cmd.Parameters.AddWithValue("@telefono", reg.ProveedorID);
-                    cmd.Parameters.AddWithValue("@email", reg.Total);
+                    cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
+                    cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
+                    cmd.Parameters.AddWithValue("@total", reg.Total);
 
                     int i = cmd.ExecuteNonQuery();
                     mensaje = $"Se ha insertado {i} socios";
