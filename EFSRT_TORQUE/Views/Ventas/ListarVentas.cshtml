@@ -1,51 +1,110 @@
 ﻿@model IEnumerable<EFSRT_TORQUE.Models.Ventas>
 
 @{
-    ViewBag.Title = "ListarVentas";
+    ViewBag.Title = "Listar Ventas";
 }
 
-<h2>ListarVentas</h2>
+<main class="body">
+    <h2>Listar Ventas</h2>
 
-<p>
-    @Html.ActionLink("Registrar Venta", "CreateVentas")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.VentaID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ClienteID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Total)
-        </th>
-        <th></th>
-    </tr>
+    <div class="txtTittle">
+        <p class="paddistance">Listar Ventas</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+            <li>  ViewBag.mensajes </li>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.VentaID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ClienteID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Total)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+        </ul>
+    </div>
+    <div>
+        <div class="paddistance bannermenu">
+            <ul>
+                <li><p>Buenos Tardes Estrellitas, El Mundo les dice HOLA</p></li>
+                <li><p>Gestionar cotizaciones</p></li>
+                <li><p>Validar cotizacion</p></li>
+            </ul>
+        </div>
+        <div class="filterMenu paddistance">
+            <p>Ordenar:</p>
+            <div class="ordermenu">
+                <div class="filtersitem">
+                    <ul>
+                        <li class="dropPopitem">
+                            <p>Todos los tipos</p>
+                            <ion-icon class="txtcolorgraydark"
+                                      name="caret-down-outline"></ion-icon>
+                        </li>
+                        <li class="dropPopitem">
+                            <p>Todos los estados</p>
+                            <ion-icon class="txtcolorgraydark"
+                                      name="caret-down-outline"></ion-icon>
+                        </li>
+                        <li class="dropPopitem">
+                            <p>Por nombre</p>
+                            <ion-icon class="txtcolorgraydark"
+                                      name="caret-down-outline"></ion-icon>
+                        </li>
+                        <li class="dropPopitem">
+                            <p>Año: 2024</p>
+                            <ion-icon class="txtcolorgraydark"
+                                      name="caret-down-outline"></ion-icon>
+                        </li>
+                        <li class="dropPopitem">
+                            <p>Mes: Enero</p>
+                            <ion-icon class="txtcolorgraydark"
+                                      name="caret-down-outline"></ion-icon>
+                        </li>
+                    </ul>
+                </div>
+                <hr />
+            </div>
+        </div>
+    </div>
 
-</table>
+    <p>
+        @Html.ActionLink("Registrar una Venta", "CreateVentas")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VentaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VentaID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClienteID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</main>
