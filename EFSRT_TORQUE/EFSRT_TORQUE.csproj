@@ -184,6 +184,10 @@
     <Content Include="Views\Productos\CreateProducto.cshtml" />
     <Content Include="Views\Proveedores\CreateProveedores.cshtml" />
     <Content Include="Views\Ventas\CreateVentas.cshtml" />
+    <Content Include="Views\Clientes\DeleteCliente.cshtml" />
+    <Content Include="Views\Clientes\EditCliente.cshtml" />
+    <Content Include="Views\Clientes\DetailsCliente.cshtml" />
+    <Content Include="Views\Productos\DetailsProducto.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

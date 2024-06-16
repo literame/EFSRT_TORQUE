@@ -4,7 +4,7 @@
     ViewBag.Title = "Listar Productos";
 }
 
-<main class="body">
+<main >
 
     <div class="txtTittle">
         <p class="paddistance">Listar Productos</p>
@@ -121,7 +121,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "buttons info" }) |
-                    @Html.ActionLink("Detailles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Detalles", "DetailsProducto", new {  id=item.ProveedorID }, new { @class = "buttons warning" }) |
                     @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "buttons danger" })
 
                 </td>

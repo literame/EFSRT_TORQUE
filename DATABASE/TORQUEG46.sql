@@ -121,7 +121,7 @@ select * from Productos
 -- Insertar registros en la tabla Clientes
 INSERT INTO Clientes (ClienteID, Nombre, Telefono, Email, Direccion)
 VALUES 
-('C001', 'Cliente 1', '123123123', 'cliente1@example.com', 'Dirección 1'),
+('C007', 'Cliente 7', '123127777', 'cliente7@example.com', 'Dirección 7'),
 ('C002', 'Cliente 2', '321321321', 'cliente2@example.com', 'Dirección 2'),
 ('C003', 'Cliente 3', '456456456', 'cliente3@example.com', 'Dirección 3'),
 ('C004', 'Cliente 4', '654654654', 'cliente4@example.com', 'Dirección 4'),
@@ -181,7 +181,7 @@ select * from DetallesCompra
 
 
 
-
+/*guardar*/
 CREATE PROCEDURE usp_agregarCliente
     @clienteId NVARCHAR(50),
     @nombre NVARCHAR(100),
@@ -195,4 +195,32 @@ BEGIN
 END
 
 
+
+CREATE PROCEDURE usp_EditarClientes
+    @clienteId NVARCHAR(50),
+    @nombre NVARCHAR(100),
+    @telefono NVARCHAR(20),
+    @email NVARCHAR(100),
+    @direccion NVARCHAR(200)
+AS
+BEGIN
+
+	update Clientes set Nombre = @nombre, Telefono = @telefono, Email = @email ,Direccion = @direccion
+	where ClienteID = @clienteId
+END
+
 select * from Clientes
+
+
+
+create procedure usp_eliminarCliente
+@clienteId varchar(50)
+as
+begin
+delete from Clientes where ClienteID = @clienteId
+end
+
+
+/* consultar el total de ventas */
+
+select Total from Ventas
