@@ -5,7 +5,22 @@
 }
 
 <main class="body">
-    <h2>Registrar Ventas</h2>
+
+    <div class="txtTittle">
+        <p class="paddistance">Registrar una Ventas</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+        </ul>
+    </div>
+    <div>
+        <div class="paddistance bannermenu">
+            <ul>
+                <li><p>Nueva Venta</p></li>
+            </ul>
+        </div>
+    </div>
 
 
     @using (Html.BeginForm())
@@ -19,7 +34,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.VentaID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.VentaID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.VentaID, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.VentaID, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -27,7 +42,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -35,7 +50,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ClienteID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.ClienteID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.ClienteID, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ClienteID, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -43,7 +58,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.TextBoxFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -57,10 +72,10 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Volver a la Lista", "ListarVentas")
     </div>
 
-    </main>
+</main>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")

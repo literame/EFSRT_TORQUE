@@ -5,8 +5,6 @@
 }
 
 <main class="body">
-    <h2>Listar Ventas</h2>
-
     <div class="txtTittle">
         <p class="paddistance">Listar Ventas</p>
         <ul>
@@ -62,9 +60,25 @@
         </div>
     </div>
 
-    <p>
-        @Html.ActionLink("Registrar una Venta", "CreateVentas")
-    </p>
+
+
+    <div class="bannerCotizacion">
+        <div>
+            <p class="txtcolorgray">Mostrando 1 - 20 resultados</p>
+        </div>
+        <div>
+            <div><img src="" alt="" /></div>
+            <div><img src="" alt="" /></div>
+            <!-- !! -->
+            <div>
+                <a>
+
+                    @Html.ActionLink("Registrar una Venta", "CreateVentas", new { area = "" }, new { @class = "addcotizacion" })
+                </a>
+            </div>
+        </div>
+    </div>
+
     <table class="table">
         <tr>
             <th>
@@ -98,9 +112,10 @@
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Detailles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "buttons danger" })
+
                 </td>
             </tr>
         }
