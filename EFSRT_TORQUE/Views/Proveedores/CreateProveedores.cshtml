@@ -6,7 +6,7 @@
 
 <main class="body">
     <div class="txtTittle">
-        <p class="paddistance">Agregar Proveedor</p>
+        <p class="paddistance">TorqueG64 SAC</p>
         <ul>
             <li><ion-icon name="newspaper-outline"></ion-icon></li>
             <li><ion-icon name="notifications-outline"></ion-icon></li>
@@ -27,8 +27,6 @@
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Proveedores</h4>
-            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
                 @Html.LabelFor(model => model.ProveedorID, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -72,14 +70,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                    <input type="submit" value="Agregar" class="btn btn-default" />
                 </div>
             </div>
         </div>
     }
 
 <div>
-    @Html.ActionLink("Volver a la Lista", "ListarProveedores")
+    @Html.ActionLink("Volver", "ListarProveedores")
 
 </div>
 
