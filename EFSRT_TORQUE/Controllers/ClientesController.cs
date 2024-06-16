@@ -74,6 +74,8 @@ namespace EFSRT_TORQUE.Controllers
         }
 
         // Método para eliminar un cliente
+        // Método para eliminar un cliente
+        // Método para eliminar un cliente
         string EliminarCliente(string clienteId)
         {
             string mensaje = "";
@@ -85,20 +87,24 @@ namespace EFSRT_TORQUE.Controllers
                     SqlCommand cmd = new SqlCommand("usp_eliminarCliente", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@clienteId", clienteId);
+
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha eliminado {i} socio(s)";
+                    mensaje = $"Se ha eliminado {i} cliente(s)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message;
+                    mensaje = $"Error: {ex.Message}";
+                    // Puedes manejar el error aquí o registrar en un sistema de logging
                 }
                 finally
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
+
+
 
         // Método para actualizar un cliente
         string ActualizarCliente(Clientes reg)
@@ -118,7 +124,7 @@ namespace EFSRT_TORQUE.Controllers
                     cmd.Parameters.AddWithValue("@direccion", reg.Direccion);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha actualizado {i} socio(s)";
+                    mensaje = $"Se ha actualizado {i} cliente(s)";
                 }
                 catch (SqlException ex)
                 {
@@ -128,9 +134,10 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
+
 
         // Acción para listar los clientes
         public ActionResult ListarClientes()
@@ -145,6 +152,8 @@ namespace EFSRT_TORQUE.Controllers
         }
 
         // Acción para crear un nuevo cliente (post)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Clientes reg)
         {
             if (ModelState.IsValid)
@@ -152,15 +161,34 @@ namespace EFSRT_TORQUE.Controllers
                 ViewBag.mensaje = AgregarCliente(reg);
                 return RedirectToAction("ListarClientes");
             }
+
             return View("CreateCliente", reg);
         }
 
         // Acción para eliminar un cliente
+
+        // Acción para eliminar un cliente (GET)
         public ActionResult DeleteCliente(string id)
         {
-            ViewBag.mensaje = EliminarCliente(id);
-            return View("DeleteCliente");
+            Clientes cliente = Cliente().FirstOrDefault(c => c.ClienteID == id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
         }
+
+        // Acción para eliminar un cliente (POST)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string clienteId)
+        {
+            string mensaje = EliminarCliente(clienteId);
+            ViewBag.mensaje = mensaje;
+            return RedirectToAction("ListarClientes");
+        }
+
+
 
         // Acción para editar un cliente (formulario)
         public ActionResult EditCliente(string id)
@@ -171,10 +199,15 @@ namespace EFSRT_TORQUE.Controllers
 
         // Acción para editar un cliente (post)
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Clientes reg)
         {
-            ViewBag.mensaje = ActualizarCliente(reg);
-            return RedirectToAction("ListarClientes");
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = ActualizarCliente(reg);
+                return RedirectToAction("ListarClientes");
+            }
+            return View("EditCliente", reg);
         }
 
         // Acción para ver los detalles de un cliente
