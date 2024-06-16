@@ -41,6 +41,12 @@ namespace EFSRT_TORQUE.Controllers
             return cliTemporal;
         }
 
+        // Acción para listar los clientes
+        public ActionResult ListarClientes()
+        {
+            return View(Cliente());
+        }
+
         // Método para agregar un cliente
         string AgregarCliente(Clientes reg)
         {
@@ -132,11 +138,7 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
-        // Acción para listar los clientes
-        public ActionResult ListarClientes()
-        {
-            return View(Cliente());
-        }
+
 
         // Acción para crear un nuevo cliente (formulario)
         public ActionResult CreateCliente()
