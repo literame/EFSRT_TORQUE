@@ -13,7 +13,7 @@ namespace EFSRT_TORQUE.Controllers
     public class ComprasController : Controller
     {
         //para listar los compras
-        IEnumerable<Compras> compras()
+        IEnumerable<Compras> Compra()
         {
             List<Compras> compTemporal = new List<Compras>();
             SqlConnection conn = null;
@@ -47,7 +47,7 @@ namespace EFSRT_TORQUE.Controllers
         //txt saludos
         public ActionResult ListarCompras()
         {
-            return View(compras());
+            return View(Compra());
         }
 
 
@@ -59,7 +59,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarCompra", conn);
+                    SqlCommand cmd = new SqlCommand("usp_agregarCompraa", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@compraId", reg.CompraID);
                     cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
@@ -67,7 +67,7 @@ namespace EFSRT_TORQUE.Controllers
                     cmd.Parameters.AddWithValue("@total", reg.Total);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha insertado {i} socios";
+                    mensaje = $"Se ha insertado {i} compra(s)";
                 }
                 catch (SqlException ex)
                 {
@@ -87,13 +87,19 @@ namespace EFSRT_TORQUE.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Compras reg)
         {
-            // recibe los datos en reg, ejecuto y almaceno en un ViewBag
-            ViewBag.mensaje = AgregarCompra(reg);
-            //refrescar la vista
-            return View(reg);
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = AgregarCompra(reg);
+                return RedirectToAction("ListarCompras");
+            }
+
+            return View("CreateCompra", reg);
         }
+
+
 
         string EliminarCompra(string CompraId)
         {
@@ -122,7 +128,8 @@ namespace EFSRT_TORQUE.Controllers
         }
 
 
-        string ActualizarCompra(Compras reg)
+        // Método para actualizar una compra
+        string ActualizarCompras(Compras reg)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -130,15 +137,15 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_actualizarCompra", conn);
+                    SqlCommand cmd = new SqlCommand("usp_actualizarCompras", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Compra", reg.CompraID);
+                    cmd.Parameters.AddWithValue("@compraId", reg.CompraID);
                     cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
                     cmd.Parameters.AddWithValue("@total", reg.Total);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha actualizado {i} socio(s)";
+                    mensaje = $"Se ha actualizado {i} compra(s)";
                 }
                 catch (SqlException ex)
                 {
@@ -148,9 +155,30 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
+
+        // Acción para editar una compra(formulario)
+        public ActionResult EditCompra(Int32 id)
+        {
+            Compras compra = Compra().FirstOrDefault(c => c.CompraID == id);
+            return View(compra);
+        }
+
+        // Acción para editar una Compra (post)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Compras reg)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = ActualizarCompras(reg);
+                return RedirectToAction("ListarCompras");
+            }
+            return View("EditCompra", reg);
+        }
+
 
 
         // Acción para eliminar un Compra
@@ -160,25 +188,11 @@ namespace EFSRT_TORQUE.Controllers
             return View("DeleteCompra");
         }
 
-        // Acción para editar un Compras (formulario)
-        public ActionResult EditCompra(int id)
-        {
-            Compras compra = compras().FirstOrDefault(c => c.CompraID == id);
-            return View(compra);
-        }
-
-        // Acción para editar un Compras (post)
-        [HttpPost]
-        public ActionResult EditCompra(Compras reg)
-        {
-            ViewBag.mensaje = ActualizarCompra(reg);
-            return RedirectToAction("ListarCompras");
-        }
-
+       
         // Acción para ver los detalles de un Compras
         public ActionResult DetailsCompra(int id)
         {
-            Compras compra = compras().FirstOrDefault(c => c.CompraID == id);
+            Compras compra = Compra().FirstOrDefault(c => c.CompraID == id);
             return View(compra);
         }
 

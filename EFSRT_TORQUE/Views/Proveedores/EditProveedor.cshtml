@@ -7,7 +7,7 @@
 <h2>EditProveedores</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Proveedores", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     
@@ -64,7 +64,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Volver a la Lista", "ListarProveedores")
 </div>
 
 @section Scripts {

@@ -14,7 +14,7 @@ namespace EFSRT_TORQUE.Controllers
     public class ProveedoresController : Controller
     {
         //para listar los Proveedores
-        IEnumerable<Proveedores> proveedor()
+        IEnumerable<Proveedores> Proveedor()
         {
             List<Proveedores> provTemporal = new List<Proveedores>();
             SqlConnection conn = null;
@@ -51,7 +51,7 @@ namespace EFSRT_TORQUE.Controllers
         //txt saludos
         public ActionResult ListarProveedores()
         {
-            return View(proveedor());
+            return View(Proveedor());
         }
 
         string AgregarProveedor(Proveedores reg)
@@ -127,6 +127,7 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
+        // Método para actualizar un cliente
         string ActualizarProveedor(Proveedores reg)
         {
             string mensaje = "";
@@ -135,7 +136,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_actualizarPorveedor", conn);
+                    SqlCommand cmd = new SqlCommand("usp_actualizarProveedores", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
                     cmd.Parameters.AddWithValue("@nombre", reg.Nombre);
@@ -144,7 +145,7 @@ namespace EFSRT_TORQUE.Controllers
                     cmd.Parameters.AddWithValue("@direccion", reg.Direccion);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha actualizado {i} socio(s)";
+                    mensaje = $"Se ha actualizado {i} proveedor(es)";
                 }
                 catch (SqlException ex)
                 {
@@ -154,8 +155,29 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
+        }
+
+       
+        // Acción para editar un proveedor (formulario)
+        public ActionResult EditProveedor(Int32 id)
+        {
+            Proveedores proveedor = Proveedor().FirstOrDefault(c => c.ProveedorID == id);
+            return View(proveedor);
+        }
+
+        // Acción para editar un proveedor (post)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Proveedores reg)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = ActualizarProveedor(reg);
+                return RedirectToAction("ListarProveedores");
+            }
+            return View("EditProveedor", reg);
         }
 
 
@@ -165,25 +187,11 @@ namespace EFSRT_TORQUE.Controllers
             return View("DeleteProveedores");
         }
 
-        // Acción para editar un Proveedores (formulario)
-        public ActionResult EditProveedor(int id)
-        {
-            Proveedores proveedores = proveedor().FirstOrDefault(c => c.ProveedorID == id);
-            return View(proveedores);
-        }
-
-        // Acción para editar un Proveedores (post)
-        [HttpPost]
-        public ActionResult EditProveedor(Proveedores reg)
-        {
-            ViewBag.mensaje = ActualizarProveedor(reg);
-            return RedirectToAction("ListarProveedores");
-        }
 
         // Acción para ver los detalles de un Proveedores
         public ActionResult DetailsProveedor(int id)
         {
-            Proveedores proveedores = proveedor().FirstOrDefault(c => c.ProveedorID == id);
+            Proveedores proveedores = Proveedor().FirstOrDefault(c => c.ProveedorID == id);
             return View(proveedores);
         }
 

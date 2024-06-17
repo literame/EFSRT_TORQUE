@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Compras", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -70,7 +70,7 @@
     }
 
 <div>
-    @Html.ActionLink("Volver", "ListarCompras")
+    @Html.ActionLink("Volver a la Lista", "ListarCompras")
 
 </div>
 </main> 
