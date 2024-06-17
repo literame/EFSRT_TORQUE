@@ -54,7 +54,7 @@ namespace EFSRT_TORQUE.Controllers
             return View(proveedor());
         }
 
-        string AgregarProveedores(Proveedores reg)
+        string AgregarProveedor(Proveedores reg)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -62,7 +62,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarCompra", conn);
+                    SqlCommand cmd = new SqlCommand("usp_agregarProveedor", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
                     cmd.Parameters.AddWithValue("@nombre", reg.Nombre);
@@ -86,26 +86,106 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
-        public ActionResult CreateProveedores()
+        public ActionResult CreateProveedor()
         {
             return View(new Proveedores());
         }
 
         [HttpPost]
-        public ActionResult CreateProveedores(Proveedores reg)
+        public ActionResult CreateProveedor(Proveedores reg)
         {
             // recibe los datos en reg, ejecuto y almaceno en un ViewBag
-            ViewBag.mensaje = AgregarProveedores(reg);
+            ViewBag.mensaje = AgregarProveedor(reg);
             //refrescar la vista
             return View(reg);
         }
 
 
+        string EliminarProveedor(string ProveedorID)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_eliminarProveedor", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@proveedorId", ProveedorID);
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha eliminado {i} socio(s)";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
+
+        string ActualizarProveedor(Proveedores reg)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_actualizarPorveedor", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
+                    cmd.Parameters.AddWithValue("@nombre", reg.Nombre);
+                    cmd.Parameters.AddWithValue("@telefono", reg.Telefono);
+                    cmd.Parameters.AddWithValue("@email", reg.Email);
+                    cmd.Parameters.AddWithValue("@direccion", reg.Direccion);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha actualizado {i} socio(s)";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
 
 
+        public ActionResult DeleteProveedor(string id)
+        {
+            ViewBag.mensaje = EliminarProveedor(id);
+            return View("DeleteProveedores");
+        }
 
+        // Acción para editar un Proveedores (formulario)
+        public ActionResult EditProveedor(int id)
+        {
+            Proveedores proveedores = proveedor().FirstOrDefault(c => c.ProveedorID == id);
+            return View(proveedores);
+        }
 
+        // Acción para editar un Proveedores (post)
+        [HttpPost]
+        public ActionResult EditProveedor(Proveedores reg)
+        {
+            ViewBag.mensaje = ActualizarProveedor(reg);
+            return RedirectToAction("ListarProveedores");
+        }
 
+        // Acción para ver los detalles de un Proveedores
+        public ActionResult DetailsProveedor(int id)
+        {
+            Proveedores proveedores = proveedor().FirstOrDefault(c => c.ProveedorID == id);
+            return View(proveedores);
+        }
 
 
 

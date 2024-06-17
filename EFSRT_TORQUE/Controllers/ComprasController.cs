@@ -61,7 +61,7 @@ namespace EFSRT_TORQUE.Controllers
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("usp_agregarCompra", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@clienteId", reg.CompraID);
+                    cmd.Parameters.AddWithValue("@compraId", reg.CompraID);
                     cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
                     cmd.Parameters.AddWithValue("@total", reg.Total);
@@ -95,7 +95,92 @@ namespace EFSRT_TORQUE.Controllers
             return View(reg);
         }
 
+        string EliminarCompra(string CompraId)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_eliminarCompra", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@compraId", CompraId);
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha eliminado {i} socio(s)";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
 
+
+        string ActualizarCompra(Compras reg)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_actualizarCompra", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Compra", reg.CompraID);
+                    cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
+                    cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
+                    cmd.Parameters.AddWithValue("@total", reg.Total);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha actualizado {i} socio(s)";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
+
+
+        // Acción para eliminar un Compra
+        public ActionResult DeleteCompra(string id)
+        {
+            ViewBag.mensaje = EliminarCompra(id);
+            return View("DeleteCompra");
+        }
+
+        // Acción para editar un Compras (formulario)
+        public ActionResult EditCompra(int id)
+        {
+            Compras compra = compras().FirstOrDefault(c => c.CompraID == id);
+            return View(compra);
+        }
+
+        // Acción para editar un Compras (post)
+        [HttpPost]
+        public ActionResult EditCompra(Compras reg)
+        {
+            ViewBag.mensaje = ActualizarCompra(reg);
+            return RedirectToAction("ListarCompras");
+        }
+
+        // Acción para ver los detalles de un Compras
+        public ActionResult DetailsCompra(int id)
+        {
+            Compras compra = compras().FirstOrDefault(c => c.CompraID == id);
+            return View(compra);
+        }
 
 
     }

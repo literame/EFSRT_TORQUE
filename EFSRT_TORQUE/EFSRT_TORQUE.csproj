@@ -182,12 +182,23 @@
     <Content Include="Views\Clientes\CreateCliente.cshtml" />
     <Content Include="Views\Compras\CreateCompra.cshtml" />
     <Content Include="Views\Productos\CreateProducto.cshtml" />
-    <Content Include="Views\Proveedores\CreateProveedores.cshtml" />
+    <Content Include="Views\Proveedores\CreateProveedor.cshtml" />
     <Content Include="Views\Ventas\CreateVentas.cshtml" />
     <Content Include="Views\Clientes\DeleteCliente.cshtml" />
     <Content Include="Views\Clientes\EditCliente.cshtml" />
     <Content Include="Views\Clientes\DetailsCliente.cshtml" />
     <Content Include="Views\Productos\DetailsProducto.cshtml" />
+    <Content Include="Views\Compras\DeleteCompra.cshtml" />
+    <Content Include="Views\Compras\EditCompra.cshtml" />
+    <Content Include="Views\Compras\DetailsCompra.cshtml" />
+    <Content Include="Views\Productos\EditProducto.cshtml" />
+    <Content Include="Views\Productos\DeleteProducto.cshtml" />
+    <Content Include="Views\Proveedores\DeleteProveedor.cshtml" />
+    <Content Include="Views\Proveedores\EditProveedor.cshtml" />
+    <Content Include="Views\Proveedores\DetailsProveedor.cshtml" />
+    <Content Include="Views\Ventas\DeleteVenta.cshtml" />
+    <Content Include="Views\Ventas\EditVenta.cshtml" />
+    <Content Include="Views\Ventas\DetailsVenta.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

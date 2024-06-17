@@ -112,9 +112,9 @@
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "buttons info" }) |
-                    @Html.ActionLink("Detailles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "buttons warning" }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "buttons danger" })
+                    @Html.ActionLink("Editar", "EditVenta", new { id=item.VentaID  }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Detalles", "DetailsVenta", new { id = item.VentaID }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Eliminar", "DeleteVenta", new { id = item.VentaID }, new { @class = "buttons danger" })
 
                 </td>
             </tr>
