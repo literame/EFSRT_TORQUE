@@ -1,0 +1,50 @@
+﻿@model EFSRT_TORQUE.Models.Compras
+
+@{
+    ViewBag.Title = "DetailsCompras";
+}
+
+<h2>DetailsCompras</h2>
+
+<div>
+    <h4>Compras</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompraID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CompraID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProveedorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProveedorID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

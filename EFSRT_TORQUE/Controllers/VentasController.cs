@@ -55,7 +55,7 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
-        string AgregarProveedores(Ventas reg)
+        string AgregarVenta(Ventas reg)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -94,10 +94,118 @@ namespace EFSRT_TORQUE.Controllers
         public ActionResult CreateVentas(Ventas reg)
         {
             // recibe los datos en reg, ejecuto y almaceno en un ViewBag
-            ViewBag.mensaje = AgregarProveedores(reg);
+            ViewBag.mensaje = AgregarVenta(reg);
             //refrescar la vista
             return View(reg);
         }
+
+
+        // Método para eliminar un Ventas
+        string EliminarVenta(string ventasId)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_eliminarVenta", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ventasId", ventasId);
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha eliminado {i} socio(s)";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
+
+
+        // Método para actualizar un Ventas
+        string ActualizarVenta(Ventas reg)
+        {
+            string mensaje = "";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_actualizarVenta", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ventaId", reg.VentaID);
+                    cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
+                    cmd.Parameters.AddWithValue("@clienteId", reg.ClienteID);
+                    cmd.Parameters.AddWithValue("@total", reg.Total);
+
+                    int i = cmd.ExecuteNonQuery();
+                    mensaje = $"Se ha actualizado {i} socio(s)";
+                }
+                catch (SqlException ex)
+                {
+                    mensaje = ex.Message;
+                }
+                finally
+                {
+                    conn.Close();
+                }
+                return mensaje;
+            }
+        }
+
+
+        public ActionResult DeleteVenta(string id)
+        {
+            ViewBag.mensaje = EliminarVenta(id);
+            return View("DeleteVenta");
+        }
+
+        // Acción para editar un Ventas (formulario)
+        public ActionResult EditVenta(int id)
+        {
+            Ventas venta = ventas().FirstOrDefault(c => c.VentaID == id);
+            return View(venta);
+        }
+
+        // Acción para editar un Ventas (post)
+        [HttpPost]
+        public ActionResult Edit(Ventas reg)
+        {
+            ViewBag.mensaje = ActualizarVenta(reg);
+            return RedirectToAction("ListarVentass");
+        }
+
+        // Acción para ver los detalles de un Ventas
+        public ActionResult DetailsVenta(int id)
+        {
+            Ventas venta = ventas().FirstOrDefault(c => c.VentaID == id);
+            return View(venta);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

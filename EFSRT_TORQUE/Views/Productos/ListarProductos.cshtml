@@ -120,9 +120,9 @@
                     @Html.DisplayFor(modelItem => item.ProveedorID)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Editar", "EditProducto", new {  id=item.ProveedorID  }, new { @class = "buttons info" }) |
                     @Html.ActionLink("Detalles", "DetailsProducto", new {  id=item.ProveedorID }, new { @class = "buttons warning" }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { /* id=item.PrimaryKey */ }, new { @class = "buttons danger" })
+                    @Html.ActionLink("Eliminar", "DeleteProducto", new {  id=item.ProveedorID  }, new { @class = "buttons danger" })
 
                 </td>
             </tr>

@@ -115,7 +115,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_actualizarCliente", conn);
+                    SqlCommand cmd = new SqlCommand("usp_actualizarProductos", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@productoId", reg.ProductoID);
                     cmd.Parameters.AddWithValue("@descripcion", reg.Descripcion);
@@ -140,47 +140,47 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
-        // Acción para crear un nuevo cliente (formulario)
-        public ActionResult CreateCliente()
+        // Acción para crear un nuevo Productos (formulario)
+        public ActionResult CreateProductos()
         {
-            return View(new Clientes());
+            return View(new Productos());
         }
 
-        // Acción para crear un nuevo cliente (post)
+        // Acción para crear un nuevo Productos (post)
         public ActionResult Create(Productos reg)
         {
             if (ModelState.IsValid)
             {
                 ViewBag.mensaje = AgregarProducto(reg);
-                return RedirectToAction("ListarClientes");
+                return RedirectToAction("ListarProductos");
             }
-            return View("CreateCliente", reg);
+            return View("CreateProducto", reg);
         }
 
-        // Acción para eliminar un cliente
-        public ActionResult DeleteCliente(string id)
+        // Acción para eliminar un Productos
+        public ActionResult DeleteProducto(string id)
         {
             ViewBag.mensaje = EliminarProducto(id);
-            return View("DeleteCliente");
+            return View("DeleteProducto");
         }
 
-        // Acción para editar un cliente (formulario)
-        public ActionResult EditCliente(int id)
+        // Acción para editar un Productos (formulario)
+        public ActionResult EditProducto(int id)
         {
             Productos producto = productos().FirstOrDefault(c => c.ProductoID == id);
             return View(producto);
         }
 
-        // Acción para editar un cliente (post)
+        // Acción para editar un Productos (post)
         [HttpPost]
         public ActionResult Edit(Productos reg)
         {
             ViewBag.mensaje = ActualizarProducto(reg);
-            return RedirectToAction("ListarClientes");
+            return RedirectToAction("ListarProductos");
         }
 
-        // Acción para ver los detalles de un cliente
-        public ActionResult DetailsCliente(int id)
+        // Acción para ver los detalles de un Productos
+        public ActionResult DetailsProducto(int id)
         {
             Productos producto = productos().FirstOrDefault(c => c.ProductoID == id);
             return View(producto);
