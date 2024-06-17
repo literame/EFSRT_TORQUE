@@ -224,3 +224,162 @@ end
 /* consultar el total de ventas */
 
 select Total from Ventas
+
+CREATE PROCEDURE usp_actualizarCliente
+    @clienteId NVARCHAR(50),
+    @nombre NVARCHAR(100),
+    @telefono NVARCHAR(50),
+    @email NVARCHAR(100),
+    @direccion NVARCHAR(200)
+AS
+BEGIN
+    UPDATE Clientes
+    SET Nombre = @nombre,
+        Telefono = @telefono,
+        Email = @email,
+        Direccion = @direccion
+    WHERE ClienteID = @clienteId;
+END
+
+CREATE PROCEDURE usp_agregarCliente
+    @clienteId NVARCHAR(50),
+    @nombre NVARCHAR(100),
+    @telefono NVARCHAR(50),
+    @email NVARCHAR(100),
+    @direccion NVARCHAR(200)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Clientes (ClienteID, Nombre, Telefono, Email, Direccion)
+    VALUES (@clienteId, @nombre, @telefono, @email, @direccion);
+END
+
+CREATE PROCEDURE usp_eliminarClientes
+    @Nombre NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DELETE FROM Clientes
+    WHERE Nombre = @nombre;
+END
+
+
+
+
+
+
+
+
+
+-- Crear procedimiento almacenado para listar proveedores
+CREATE PROCEDURE usp_listarProveedores
+AS
+BEGIN
+    SELECT * FROM Proveedores;
+END;
+GO
+
+-- Crear procedimiento almacenado para agregar un proveedor
+CREATE PROCEDURE usp_agregarProveedor
+    @proveedorId INT,
+    @nombre NVARCHAR(100),
+    @telefono NVARCHAR(20),
+    @email NVARCHAR(100),
+    @direccion NVARCHAR(200)
+AS
+BEGIN
+    INSERT INTO Proveedores (ProveedorID, Nombre, Telefono, Email, Direccion)
+    VALUES (@proveedorId, @nombre, @telefono, @email, @direccion);
+END;
+GO
+
+-- Crear procedimiento almacenado para eliminar un proveedor
+CREATE PROCEDURE usp_eliminarProveedor
+    @proveedorId INT
+AS
+BEGIN
+    DELETE FROM Proveedores WHERE ProveedorID = @proveedorId;
+END;
+GO
+
+-- Crear procedimiento almacenado para actualizar un proveedor
+CREATE PROCEDURE usp_actualizarProveedor
+    @proveedorId INT,
+    @nombre NVARCHAR(100),
+    @telefono NVARCHAR(20),
+    @email NVARCHAR(100),
+    @direccion NVARCHAR(200)
+AS
+BEGIN
+    UPDATE Proveedores
+    SET Nombre = @nombre, Telefono = @telefono, Email = @email, Direccion = @direccion
+    WHERE ProveedorID = @proveedorId;
+END;
+GO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Crear procedimiento almacenado para listar productos
+CREATE PROCEDURE usp_listarProductos
+AS
+BEGIN
+    SELECT * FROM Productos;
+END;
+GO
+
+-- Crear procedimiento almacenado para agregar un producto
+CREATE PROCEDURE usp_agregarProducto
+    @productoId INT,
+    @descripcion NVARCHAR(100),
+    @precio DECIMAL(18, 2),
+    @stock INT,
+    @proveedorId INT
+AS
+BEGIN
+    INSERT INTO Productos (ProductoID, Descripcion, Precio, Stock, ProveedorID)
+    VALUES (@productoId, @descripcion, @precio, @stock, @proveedorId);
+END;
+GO
+
+-- Crear procedimiento almacenado para eliminar un producto
+CREATE PROCEDURE usp_eliminarProducto
+    @productoId INT
+AS
+BEGIN
+    DELETE FROM Productos WHERE ProductoID = @productoId;
+END;
+GO
+
+-- Crear procedimiento almacenado para actualizar un producto
+CREATE PROCEDURE usp_actualizarProductos
+    @productoId INT,
+    @descripcion NVARCHAR(100),
+    @precio DECIMAL(18, 2),
+    @stock INT,
+    @proveedorId INT
+AS
+BEGIN
+    UPDATE Productos
+    SET Descripcion = @descripcion, Precio = @precio, Stock = @stock, ProveedorID = @proveedorId
+    WHERE ProductoID = @productoId;
+END;
+GO
