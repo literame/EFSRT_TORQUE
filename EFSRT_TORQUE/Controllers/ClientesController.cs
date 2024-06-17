@@ -138,12 +138,12 @@ namespace EFSRT_TORQUE.Controllers
             return mensaje;
         }
 
-
         // Acción para listar los clientes
         public ActionResult ListarClientes()
         {
             return View(Cliente());
         }
+
 
         // Acción para crear un nuevo cliente (formulario)
         public ActionResult CreateCliente()
