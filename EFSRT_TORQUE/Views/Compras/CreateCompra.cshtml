@@ -69,8 +69,12 @@
         </div>
     }
 
-<div>
-    @Html.ActionLink("Volver a la Lista", "ListarCompras")
+    <div>
+        @Html.ActionLink("Volver a la lista", "ListarCompras")
 
-</div>
-</main> 
+    </div>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -55,31 +55,31 @@ namespace EFSRT_TORQUE.Controllers
             {
                 try
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarProductos", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@productoId", reg.ProductoID);
-                    cmd.Parameters.AddWithValue("@descripcion", reg.Descripcion);
-                    cmd.Parameters.AddWithValue("@precio", reg.Precio);
-                    cmd.Parameters.AddWithValue("@stock", reg.Stock);
-                    cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
+                     conn.Open();
+                     SqlCommand cmd = new SqlCommand("usp_agregarProductoo", conn);
+                     cmd.CommandType = CommandType.StoredProcedure;
+                     cmd.Parameters.AddWithValue("@productoId", reg.ProductoID);
+                     cmd.Parameters.AddWithValue("@descripcion", reg.Descripcion);
+                     cmd.Parameters.AddWithValue("@precio", reg.Precio);
+                     cmd.Parameters.AddWithValue("@stock", reg.Stock);
+                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
 
-                    int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha insertado {i} producto(s)";
+                        int i = cmd.ExecuteNonQuery();
+                        mensaje = $"Se ha agregado {i} producto(s)";
+                    }
+                    catch (SqlException ex)
+                    {
+                        mensaje = ex.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                    return mensaje;
                 }
-                catch (SqlException ex)
-                {
-                    mensaje = ex.Message;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-            }
-            return mensaje;
         }
 
-        
+
         public ActionResult CreateProducto()
         {
             return View(new Productos());
@@ -98,6 +98,7 @@ namespace EFSRT_TORQUE.Controllers
 
             return View("CreateProducto", reg);
         }
+
 
 
         string EliminarProducto(string ProductoID)
