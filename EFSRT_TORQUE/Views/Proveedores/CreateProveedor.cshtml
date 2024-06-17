@@ -22,7 +22,7 @@
     </div>
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Create", "Proveedores", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 

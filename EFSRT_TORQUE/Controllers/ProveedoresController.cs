@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using EFSRT_TORQUE.Models;
-using System.Drawing;
+using System.Collections;
 
 namespace EFSRT_TORQUE.Controllers
 {
@@ -62,7 +62,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarProveedor", conn);
+                    SqlCommand cmd = new SqlCommand("usp_agregarProveedorr", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
                     cmd.Parameters.AddWithValue("@nombre", reg.Nombre);
@@ -92,14 +92,17 @@ namespace EFSRT_TORQUE.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateProveedor(Proveedores reg)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Proveedores reg)
         {
-            // recibe los datos en reg, ejecuto y almaceno en un ViewBag
-            ViewBag.mensaje = AgregarProveedor(reg);
-            //refrescar la vista
-            return View(reg);
-        }
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = AgregarProveedor(reg);
+                return RedirectToAction("ListarProveedores");
+            }
 
+            return View("CreateProveedor", reg);
+        }
 
         string EliminarProveedor(string ProveedorID)
         {
