@@ -55,6 +55,7 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
+        // Método para agregar una venta
         string AgregarVenta(Ventas reg)
         {
             string mensaje = "";
@@ -63,7 +64,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarVentas", conn);
+                    SqlCommand cmd = new SqlCommand("usp_agregarVenta", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ventaId", reg.VentaID);
                     cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
@@ -71,11 +72,11 @@ namespace EFSRT_TORQUE.Controllers
                     cmd.Parameters.AddWithValue("@total", reg.Total);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha insertado {i} socios";
+                    mensaje = $"Se ha agregado {i} venta(s)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message; //si hay error muestra mensaje del error 
+                    mensaje = ex.Message;
                 }
                 finally
                 {
@@ -85,18 +86,24 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
+
         public ActionResult CreateVentas()
         {
             return View(new Ventas());
         }
 
+        // Acción para crear un nueva venta (post)
         [HttpPost]
-        public ActionResult CreateVentas(Ventas reg)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Ventas reg)
         {
-            // recibe los datos en reg, ejecuto y almaceno en un ViewBag
-            ViewBag.mensaje = AgregarVenta(reg);
-            //refrescar la vista
-            return View(reg);
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = AgregarVenta(reg);
+                return RedirectToAction("ListarVentas");
+            }
+
+            return View("CreateVentas", reg);
         }
 
 

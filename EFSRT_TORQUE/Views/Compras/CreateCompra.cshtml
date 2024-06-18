@@ -1,14 +1,12 @@
 ﻿@model EFSRT_TORQUE.Models.Compras
 
 @{
-    ViewBag.Title = "Registrar Compra";
+    ViewBag.Title = "Agregar Compra";
 }
-
 <main class="body">
 
-
     <div class="txtTittle">
-        <p class="paddistance">Registrar una Compra</p>
+        <p class="paddistance">TorqueG64 SAC</p>
         <ul>
             <li><ion-icon name="newspaper-outline"></ion-icon></li>
             <li><ion-icon name="notifications-outline"></ion-icon></li>
@@ -18,7 +16,7 @@
     <div>
         <div class="paddistance bannermenu">
             <ul>
-                <li><p>Nueva Compra</p></li>
+                <li><p>Nuevo Compra</p></li>
             </ul>
         </div>
     </div>
@@ -27,54 +25,32 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.CompraID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.CompraID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CompraID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ProveedorID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.ProveedorID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ProveedorID, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Total, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Total, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Total, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Agregar" class="btn btn-default" />
-                </div>
-            </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Fecha)
+            @Html.TextBoxFor(m => m.Fecha, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Fecha)
         </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ProveedorID)
+            @Html.TextBoxFor(m => m.ProveedorID, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ProveedorID)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Total)
+            @Html.TextBoxFor(m => m.Total, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Total)
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Agregar</button>
     }
 
     <div>
-        @Html.ActionLink("Volver a la lista", "ListarCompras")
+
+        @Html.ActionLink("Volver a la Lista", "ListarCompras")
 
     </div>
-</main>
 
+</main>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

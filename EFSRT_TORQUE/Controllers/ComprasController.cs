@@ -51,6 +51,7 @@ namespace EFSRT_TORQUE.Controllers
         }
 
 
+        // Método para agregar un producto
         string AgregarCompra(Compras reg)
         {
             string mensaje = "";
@@ -59,7 +60,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarCompraa", conn);
+                    SqlCommand cmd = new SqlCommand("usp_agregarCompra", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@compraId", reg.CompraID);
                     cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
@@ -67,11 +68,11 @@ namespace EFSRT_TORQUE.Controllers
                     cmd.Parameters.AddWithValue("@total", reg.Total);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha insertado {i} compra(s)";
+                    mensaje = $"Se ha agregado {i} compra(s)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message; //si hay error muestra mensaje del error 
+                    mensaje = ex.Message;
                 }
                 finally
                 {
@@ -81,11 +82,13 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
+
         public ActionResult CreateCompra()
         {
             return View(new Compras());
         }
 
+        // Acción para crear un nueva compra (post)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Compras reg)
@@ -98,6 +101,7 @@ namespace EFSRT_TORQUE.Controllers
 
             return View("CreateCompra", reg);
         }
+
 
 
 
