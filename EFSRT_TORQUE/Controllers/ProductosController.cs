@@ -7,18 +7,17 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using EFSRT_TORQUE.Models;
+using System.Collections;
 
 namespace EFSRT_TORQUE.Controllers
 {
     public class ProductosController : Controller
     {
         //para listar los productos
-        private IEnumerable<Productos> productos()
+        IEnumerable<Productos> Producto()
         {
             List<Productos> prodTemporal = new List<Productos>();
-            SqlConnection conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
-            );
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
             conn.Open();
 
             string query = "SELECT * FROM Productos";
@@ -27,7 +26,7 @@ namespace EFSRT_TORQUE.Controllers
 
             while (rdr.Read())
             {
-                prodTemporal.Add(new Productos
+                prodTemporal.Add(new Productos()
                 {
                     ProductoID = rdr.GetInt32(0),
                     Descripcion = rdr.GetString(1),
@@ -45,9 +44,10 @@ namespace EFSRT_TORQUE.Controllers
         // GET: Productos
         public ActionResult ListarProductos()
         {
-            return View(productos());
+            return View(Producto());
         }
 
+        // Método para agregar un producto
         string AgregarProducto(Productos reg)
         {
             string mensaje = "";
@@ -55,29 +55,50 @@ namespace EFSRT_TORQUE.Controllers
             {
                 try
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarProducto", conn);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@productoId", reg.ProductoID);
-                    cmd.Parameters.AddWithValue("@descripcion", reg.Descripcion);
-                    cmd.Parameters.AddWithValue("@precio", reg.Precio);
-                    cmd.Parameters.AddWithValue("@stock", reg.Stock);
-                    cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
+                     conn.Open();
+                     SqlCommand cmd = new SqlCommand("usp_agregarProductoo", conn);
+                     cmd.CommandType = CommandType.StoredProcedure;
+                     cmd.Parameters.AddWithValue("@productoId", reg.ProductoID);
+                     cmd.Parameters.AddWithValue("@descripcion", reg.Descripcion);
+                     cmd.Parameters.AddWithValue("@precio", reg.Precio);
+                     cmd.Parameters.AddWithValue("@stock", reg.Stock);
+                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
 
-                    int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha insertado {i} socio(s)";
+                        int i = cmd.ExecuteNonQuery();
+                        mensaje = $"Se ha agregado {i} producto(s)";
+                    }
+                    catch (SqlException ex)
+                    {
+                        mensaje = ex.Message;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                    return mensaje;
                 }
-                catch (SqlException ex)
-                {
-                    mensaje = ex.Message;
-                }
-                finally
-                {
-                    conn.Close();
-                }
-                return mensaje;
-            }
         }
+
+
+        public ActionResult CreateProducto()
+        {
+            return View(new Productos());
+        }
+
+        // Acción para crear un nuevo producto (post)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Productos reg)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = AgregarProducto(reg);
+                return RedirectToAction("ListarProductos");
+            }
+
+            return View("CreateProducto", reg);
+        }
+
 
 
         string EliminarProducto(string ProductoID)
@@ -140,22 +161,6 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
-        // Acción para crear un nuevo Productos (formulario)
-        public ActionResult CreateProductos()
-        {
-            return View(new Productos());
-        }
-
-        // Acción para crear un nuevo Productos (post)
-        public ActionResult Create(Productos reg)
-        {
-            if (ModelState.IsValid)
-            {
-                ViewBag.mensaje = AgregarProducto(reg);
-                return RedirectToAction("ListarProductos");
-            }
-            return View("CreateProducto", reg);
-        }
 
         // Acción para eliminar un Productos
         public ActionResult DeleteProducto(string id)
@@ -164,25 +169,32 @@ namespace EFSRT_TORQUE.Controllers
             return View("DeleteProducto");
         }
 
-        // Acción para editar un Productos (formulario)
+
+        // Acción para editar un producto (formulario)
         public ActionResult EditProducto(int id)
         {
-            Productos producto = productos().FirstOrDefault(c => c.ProductoID == id);
+            Productos producto = Producto().FirstOrDefault(c => c.ProductoID == id);
             return View(producto);
         }
 
-        // Acción para editar un Productos (post)
+        // Acción para editar un producto(post)
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Productos reg)
         {
-            ViewBag.mensaje = ActualizarProducto(reg);
-            return RedirectToAction("ListarProductos");
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = ActualizarProducto(reg);
+                return RedirectToAction("ListarProductos");
+            }
+            return View("EditProducto", reg);
         }
+
 
         // Acción para ver los detalles de un Productos
         public ActionResult DetailsProducto(int id)
         {
-            Productos producto = productos().FirstOrDefault(c => c.ProductoID == id);
+            Productos producto = Producto().FirstOrDefault(c => c.ProductoID == id);
             return View(producto);
         }
     }

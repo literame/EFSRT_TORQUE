@@ -73,8 +73,28 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
-        // Método para eliminar un cliente
-        // Método para eliminar un cliente
+        // Acción para crear un nuevo cliente (formulario)
+        public ActionResult CreateCliente()
+        {
+            return View(new Clientes());
+        }
+
+        // Acción para crear un nuevo cliente (post)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Clientes reg)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = AgregarCliente(reg);
+                return RedirectToAction("ListarClientes");
+            }
+
+            return View("CreateCliente", reg);
+        }
+
+
+
         // Método para eliminar un cliente
         string EliminarCliente(string clienteId)
         {
@@ -144,26 +164,6 @@ namespace EFSRT_TORQUE.Controllers
             return View(Cliente());
         }
 
-
-        // Acción para crear un nuevo cliente (formulario)
-        public ActionResult CreateCliente()
-        {
-            return View(new Clientes());
-        }
-
-        // Acción para crear un nuevo cliente (post)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Clientes reg)
-        {
-            if (ModelState.IsValid)
-            {
-                ViewBag.mensaje = AgregarCliente(reg);
-                return RedirectToAction("ListarClientes");
-            }
-
-            return View("CreateCliente", reg);
-        }
 
         // Acción para eliminar un cliente
 

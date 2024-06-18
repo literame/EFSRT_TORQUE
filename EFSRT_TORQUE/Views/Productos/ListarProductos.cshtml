@@ -4,7 +4,7 @@
     ViewBag.Title = "Listar Productos";
 }
 
-<main >
+<main>
 
     <div class="txtTittle">
         <p class="paddistance">Listar Productos</p>
@@ -59,12 +59,6 @@
         </div>
     </div>
 
-
-
-    <!--
-    <p>
-        @Html.ActionLink("Agregar Producto", "CreateProducto")
-    </p>  -->
     <div class="bannerCotizacion">
         <div>
             <p class="txtcolorgray">Mostrando 1 - 20 resultados</p>
@@ -72,7 +66,7 @@
         <div>
             <div><img src="" alt="" /></div>
             <div><img src="" alt="" /></div>
-            <!-- !! -->
+           
             <div>
                 <a>
 
@@ -81,6 +75,7 @@
             </div>
         </div>
     </div>
+
     <table class="table">
         <tr>
             <th>
@@ -120,9 +115,9 @@
                     @Html.DisplayFor(modelItem => item.ProveedorID)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "EditProducto", new {  id=item.ProveedorID  }, new { @class = "buttons info" }) |
-                    @Html.ActionLink("Detalles", "DetailsProducto", new {  id=item.ProveedorID }, new { @class = "buttons warning" }) |
-                    @Html.ActionLink("Eliminar", "DeleteProducto", new {  id=item.ProveedorID  }, new { @class = "buttons danger" })
+                    @Html.ActionLink("Editar", "EditProducto", new { id = item.ProveedorID }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Detalles", "DetailsProducto", new { id = item.ProveedorID }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Eliminar", "DeleteProducto", new { id = item.ProveedorID }, new { @class = "buttons danger" })
 
                 </td>
             </tr>

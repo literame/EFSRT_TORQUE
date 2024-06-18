@@ -14,7 +14,7 @@ namespace EFSRT_TORQUE.Controllers
     public class VentasController : Controller
     {
         //para listar los Ventas
-        IEnumerable<Ventas> ventas()
+        IEnumerable<Ventas> Venta()
         {
             List<Ventas> ventasTemporal = new List<Ventas>();
             SqlConnection conn = null;
@@ -50,7 +50,7 @@ namespace EFSRT_TORQUE.Controllers
         //txt saludos
         public ActionResult ListarVentas()
         {
-            return View(ventas());
+            return View(Venta());
         }
 
 
@@ -128,8 +128,8 @@ namespace EFSRT_TORQUE.Controllers
         }
 
 
-        // Método para actualizar un Ventas
-        string ActualizarVenta(Ventas reg)
+        // Método para actualizar una venta
+        string ActualizarVentas(Ventas reg)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -137,7 +137,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_actualizarVenta", conn);
+                    SqlCommand cmd = new SqlCommand("usp_actualizarVentas", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ventaId", reg.VentaID);
                     cmd.Parameters.AddWithValue("@fecha", reg.Fecha);
@@ -145,7 +145,7 @@ namespace EFSRT_TORQUE.Controllers
                     cmd.Parameters.AddWithValue("@total", reg.Total);
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha actualizado {i} socio(s)";
+                    mensaje = $"Se ha actualizado {i} venta(s)";
                 }
                 catch (SqlException ex)
                 {
@@ -155,10 +155,29 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
 
+         // Acción para editar una venta(formulario)
+        public ActionResult EditVenta(Int32 id)
+        {
+            Ventas venta = Venta().FirstOrDefault(c => c.VentaID == id);
+            return View(venta);
+        }
+
+        // Acción para editar una venta (post)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Ventas reg)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.mensaje = ActualizarVentas(reg);
+                return RedirectToAction("ListarVentas");
+            }
+            return View("EditVenta", reg);
+        }
 
         public ActionResult DeleteVenta(string id)
         {
@@ -166,25 +185,11 @@ namespace EFSRT_TORQUE.Controllers
             return View("DeleteVenta");
         }
 
-        // Acción para editar un Ventas (formulario)
-        public ActionResult EditVenta(int id)
-        {
-            Ventas venta = ventas().FirstOrDefault(c => c.VentaID == id);
-            return View(venta);
-        }
-
-        // Acción para editar un Ventas (post)
-        [HttpPost]
-        public ActionResult Edit(Ventas reg)
-        {
-            ViewBag.mensaje = ActualizarVenta(reg);
-            return RedirectToAction("ListarVentass");
-        }
 
         // Acción para ver los detalles de un Ventas
         public ActionResult DetailsVenta(int id)
         {
-            Ventas venta = ventas().FirstOrDefault(c => c.VentaID == id);
+            Ventas venta = Venta().FirstOrDefault(c => c.VentaID == id);
             return View(venta);
         }
 
