@@ -1,27 +1,28 @@
 ﻿@model EFSRT_TORQUE.Models.Proveedores
 
 @{
-    ViewBag.Title = "Editar Proveedor";
+    ViewBag.Title = "EditProveedor";
 }
-
 <main>
 
-    <p class="paddistance">Editar Proveedor</p>
-    <ul>
-        <li><ion-icon name="newspaper-outline"></ion-icon></li>
-        <li><ion-icon name="notifications-outline"></ion-icon></li>
-        <li><ion-icon name="person-outline"></ion-icon></li>
-    </ul>
+
+    <div class="txtTittle">
+        <p class="paddistance">Editar Proveedores</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+        </ul>
     </div>
     <div>
         <div class="paddistance bannermenu">
             <ul>
-                <li><p>Editar Datos</p></li>
+                <li><p>Ingresar Datos</p></li>
             </ul>
         </div>
     </div>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Proveedores", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -71,16 +72,15 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Editar" class="btn btn-default" />
                 </div>
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Volver a la Lista", "ListarProveedores")
     </div>
-
 
 </main>
 @section Scripts {

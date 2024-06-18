@@ -115,9 +115,9 @@
                     @Html.DisplayFor(modelItem => item.ProveedorID)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "EditProducto", new { id = item.ProveedorID }, new { @class = "buttons info" }) |
-                    @Html.ActionLink("Detalles", "DetailsProducto", new { id = item.ProveedorID }, new { @class = "buttons warning" }) |
-                    @Html.ActionLink("Eliminar", "DeleteProducto", new { id = item.ProveedorID }, new { @class = "buttons danger" })
+                    @Html.ActionLink("Editar", "EditProducto", new { id = item.ProductoID }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Detalles", "DetailsProducto", new { id = item.ProductoID }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Eliminar", "DeleteProducto", new { id = item.ProductoID }, new { @class = "buttons danger" })
 
                 </td>
             </tr>

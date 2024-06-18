@@ -17,10 +17,7 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Proveedores> Proveedor()
         {
             List<Proveedores> provTemporal = new List<Proveedores>();
-            SqlConnection conn = null;
-            conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
-                );
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
             conn.Open();
 
             //definimos un comando: SELECT * FROM Proveedores , este listara todos los elementos de la bd
@@ -54,6 +51,7 @@ namespace EFSRT_TORQUE.Controllers
             return View(Proveedor());
         }
 
+        // Método para agregar un cliente
         string AgregarProveedor(Proveedores reg)
         {
             string mensaje = "";
@@ -62,7 +60,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_agregarProveedorr", conn);
+                    SqlCommand cmd = new SqlCommand("usp_agregarProveedor", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@proveedorId", reg.ProveedorID);
                     cmd.Parameters.AddWithValue("@nombre", reg.Nombre);
@@ -72,11 +70,11 @@ namespace EFSRT_TORQUE.Controllers
 
 
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha insertado {i} socios";
+                    mensaje = $"Se ha insertado {i} proveedor(es)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message; //si hay error muestra mensaje del error 
+                    mensaje = ex.Message;
                 }
                 finally
                 {
@@ -86,11 +84,13 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
+        // Acción para crear un nuevo cliente (formulario)
         public ActionResult CreateProveedor()
         {
             return View(new Proveedores());
         }
 
+        // Acción para crear un nuevo cliente (post)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Proveedores reg)
@@ -130,7 +130,8 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
-        // Método para actualizar un cliente
+        
+        // Método para actualizar un proveedor
         string ActualizarProveedor(Proveedores reg)
         {
             string mensaje = "";
@@ -162,7 +163,6 @@ namespace EFSRT_TORQUE.Controllers
             return mensaje;
         }
 
-       
         // Acción para editar un proveedor (formulario)
         public ActionResult EditProveedor(Int32 id)
         {

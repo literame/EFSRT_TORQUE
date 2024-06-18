@@ -5,8 +5,9 @@
 }
 
 <main class="body">
+
     <div class="txtTittle">
-        <p class="paddistance">TorqueG64 SAC</p>
+        <p class="paddistance">Agregar Proveedor</p>
         <ul>
             <li><ion-icon name="newspaper-outline"></ion-icon></li>
             <li><ion-icon name="notifications-outline"></ion-icon></li>
@@ -28,6 +29,7 @@
 
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
             <div class="form-group">
                 @Html.LabelFor(model => model.ProveedorID, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -76,13 +78,14 @@
         </div>
     }
 
-<div>
-    @Html.ActionLink("Volver", "ListarProveedores")
+    <div>
+        @Html.ActionLink("Volver a la Lista", "ListarProveedores")
 
-</div>
+
+    </div>
 
 </main>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
