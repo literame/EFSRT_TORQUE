@@ -178,7 +178,6 @@
     <Content Include="Views\Compras\ListarCompras.cshtml" />
     <Content Include="Views\Clientes\ListarClientes.cshtml" />
     <Content Include="Views\Productos\ListarProductos.cshtml" />
-    <Content Include="Views\Proveedores\ListarProveedores.cshtml" />
     <Content Include="Views\Ventas\ListarVentas.cshtml" />
     <Content Include="Views\Clientes\CreateCliente.cshtml" />
     <Content Include="Views\Compras\CreateCompra.cshtml" />
@@ -200,6 +199,7 @@
     <Content Include="Views\Ventas\EditVenta.cshtml" />
     <Content Include="Views\Ventas\DetailsVenta.cshtml" />
     <Content Include="Views\Proveedores\EditProveedor.cshtml" />
+    <Content Include="Views\Proveedores\ListarProveedores.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
