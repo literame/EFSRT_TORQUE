@@ -1,58 +1,80 @@
 ﻿@model EFSRT_TORQUE.Models.Clientes
 
 @{
-    ViewBag.Title = "DetailsCliente";
+    ViewBag.Title = "Detalles Cliente";
 }
 
-<h2>DetailsCliente</h2>
+<main>
 
-<div>
-    <h4>Clientes</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClienteID)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClienteID)
-        </dd>
+    <h2>DetailsCliente</h2>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+    <div class="txtTittle">
+        <p class="paddistance">Detalles Clientes</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+        </ul>
+    </div>
+    <div>
+        <div class="paddistance bannermenu">
+            <ul>
+                <li><p>Informacion de los Datos</p></li>
+            </ul>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
+    <div>
+        <h4>Clientes</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ClienteID)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ClienteID)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new {  /* id = Model.ClienteID */ }) |
-    @Html.ActionLink("Volver", "ListarClientes")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new {  /* id = Model.ClienteID */ }) |
+        @Html.ActionLink("Volver", "ListarClientes")
+    </p>
+
+</main>
