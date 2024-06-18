@@ -127,9 +127,7 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
-
-        // Método para actualizar una venta
-        string ActualizarVentas(Ventas reg)
+           string ActualizarVentas(Ventas reg)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -159,14 +157,14 @@ namespace EFSRT_TORQUE.Controllers
             return mensaje;
         }
 
-         // Acción para editar una venta(formulario)
+        // Acción para editar una compra(formulario)
         public ActionResult EditVenta(Int32 id)
         {
             Ventas venta = Venta().FirstOrDefault(c => c.VentaID == id);
             return View(venta);
         }
 
-        // Acción para editar una venta (post)
+        // Acción para editar una Compra (post)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Ventas reg)

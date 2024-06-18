@@ -10,7 +10,7 @@
     <h2>EditVenta</h2>
 
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "Ventas", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
@@ -59,7 +59,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Back to List", "ListarVentas")
     </div>
 
 
