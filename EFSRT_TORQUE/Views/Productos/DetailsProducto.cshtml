@@ -4,55 +4,61 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<main>
 
-<div>
-    <h4>Productos</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductoID)
-        </dt>
+    <h2>Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProductoID)
-        </dd>
+    <div>
+        <h4>Productos</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ProductoID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProductoID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Precio)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Precio)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Stock)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProveedorID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Stock)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProveedorID)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProveedorID)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.ProveedorID)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditProducto", new { id = Model.ProductoID }) |
+        @Html.ActionLink("Volver a la lista", "ListaProducto")
+    </p>
+
+
+
+</main>
