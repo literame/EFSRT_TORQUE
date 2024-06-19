@@ -6,9 +6,6 @@
 
 <main>
 
-
-    <h2>DetailsCliente</h2>
-
     <div class="txtTittle">
         <p class="paddistance">Detalles Clientes</p>
         <ul>
@@ -73,8 +70,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new {  /* id = Model.ClienteID */ }) |
-        @Html.ActionLink("Volver", "ListarClientes")
+        @Html.ActionLink("Editar", "EditCliente", new { id = Model.ClienteID }, new { @class = "buttons warning" }) |
+        @Html.ActionLink("Volvera la lista", "ListarClientes", new { @class = "buttons warning" })
     </p>
 
 </main>

@@ -170,12 +170,8 @@ namespace EFSRT_TORQUE.Controllers
         // Acción para eliminar un cliente (GET)
         public ActionResult DeleteCliente(string id)
         {
-            Clientes cliente = Cliente().FirstOrDefault(c => c.ClienteID == id);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cliente);
+            ViewBag.mensaje = EliminarCliente(id);
+            return View();
         }
 
         // Acción para eliminar un cliente (POST)

@@ -4,30 +4,34 @@
     ViewBag.Title = "DeleteCliente";
 }
 
-<h2>DeleteCliente</h2>
+<main>
 
-<div>
-    <h4>Cliente a Eliminar</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ClienteID)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ClienteID)
-        </dd>
-        <!-- Agrega más propiedades del cliente si es necesario -->
-    </dl>
+    <h2>DeleteCliente</h2>
 
-    <p>¿Estás seguro de que deseas eliminar este cliente?</p>
+    <div>
+        <h4>Cliente a Eliminar</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ClienteID)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ClienteID)
+            </dd>
+            <!-- Agrega más propiedades del cliente si es necesario -->
+        </dl>
 
-    @using (Html.BeginForm("Delete", "Clientes", FormMethod.Post, new { id = "deleteForm" }))
-    {
-        @Html.AntiForgeryToken()
+        <p>¿Estás seguro de que deseas eliminar este cliente?</p>
 
-        <div class="form-actions">
-            <input type="submit" value="Eliminar" class="btn btn-danger" />
-            @Html.ActionLink("Cancelar", "ListarClientes", null, new { @class = "btn btn-default" })
-        </div>
-    }
-</div>
+        @using (Html.BeginForm("Delete", "Clientes", FormMethod.Post, new { id = "deleteForm" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions">
+                <input type="submit" value="Eliminar" class="btn btn-danger" />
+                @Html.ActionLink("Cancelar", "ListarClientes", null, new { @class = "btn btn-default" })
+            </div>
+        }
+    </div>
+
+</main>
