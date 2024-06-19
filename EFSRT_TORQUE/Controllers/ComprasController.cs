@@ -105,7 +105,7 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
-        string EliminarCompra(string CompraId)
+        string EliminarCompra(int CompraId)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -186,20 +186,10 @@ namespace EFSRT_TORQUE.Controllers
 
 
         // Acción para eliminar un Compra
-        public ActionResult DeleteCompra(string id)
+        public ActionResult DeleteCompra(int id)
         {
             ViewBag.mensaje = EliminarCompra(id);
             return View("DeleteCompra");
-        }
-
-        // Acción para eliminar un cliente (POST)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(string id)
-        {
-            string mensaje = EliminarCompra(id);
-            ViewBag.mensaje = mensaje;
-            return RedirectToAction("ListarCCompras");
         }
 
         // Acción para ver los detalles de un Compras
