@@ -22,7 +22,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("usp_listarComprar", conn);
+                    SqlCommand cmd = new SqlCommand("usp_listarCompras", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     SqlDataReader rdr = cmd.ExecuteReader();

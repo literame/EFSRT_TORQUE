@@ -70,14 +70,15 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Agregar" class="btn btn-default" />
+                    <input type="submit" value="Agregar" class="buttons warning" />
                 </div>
             </div>
         </div>
     }
 
 <div>
-    @Html.ActionLink("Volver a la Lista", "ListarClientes", new { @class = "buttons info" })
+
+    @Html.ActionLink("Volver a la Lista", "ListarClientes", null, new { @class = "buttons info" })
 
 
 </div>
