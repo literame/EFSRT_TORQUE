@@ -116,7 +116,9 @@ namespace EFSRT_TORQUE.Controllers
             return View("CreateProveedor", reg);
         }
 
-        string EliminarProveedor(int ProveedorID)
+
+        // Método para eliminar un proveedor
+        string EliminarProveedor(int proveedorId)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -126,23 +128,48 @@ namespace EFSRT_TORQUE.Controllers
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("usp_eliminarProveedor", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@proveedorId", ProveedorID);
+                    cmd.Parameters.AddWithValue("@proveedorId", proveedorId);
+
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha eliminado {i} socio(s)";
+                    mensaje = $"Se ha eliminado {i} proveedor(es)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message;
+                    mensaje = $"Error: {ex.Message}";
+                    // Puedes manejar el error aquí o registrar en un sistema de logging
                 }
                 finally
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
 
-        
+        // Acción para eliminar un proveedor
+
+        public ActionResult DeleteProveedor(int id)
+        {
+            Proveedores proveedor = Proveedor().FirstOrDefault(c => c.ProveedorID == id);
+            if (proveedor == null)
+            {
+                return HttpNotFound();
+            }
+            return View(proveedor);
+        }
+
+        // Acción para eliminar un proveedor (POST)
+        [HttpPost, ActionName("DeleteProveedor")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            string mensaje = EliminarProveedor(id);
+            ViewBag.mensaje = mensaje;
+            return RedirectToAction("ListarProveedores");
+        }
+
+
+
         // Método para actualizar un proveedor
         string ActualizarProveedor(Proveedores reg)
         {
@@ -193,13 +220,6 @@ namespace EFSRT_TORQUE.Controllers
                 return RedirectToAction("ListarProveedores");
             }
             return View("EditProveedor", reg);
-        }
-
-
-        public ActionResult DeleteProveedor(int id)
-        {
-            ViewBag.mensaje = EliminarProveedor(id);
-            return View("DeleteProveedor");
         }
 
         // Acción para ver los detalles de un Proveedores

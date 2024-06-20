@@ -1,13 +1,12 @@
 ﻿@model EFSRT_TORQUE.Models.Ventas
 
 @{
-    ViewBag.Title = "Eliminar Venta";
+    ViewBag.Title = "Eliminar Ventas";
 }
 
 <main>
-
     <div class="txtTittle">
-        <p class="paddistance">Eliminar Venta</p>
+        <p class="paddistance">Eliminar Ventas</p>
         <ul>
             <li><ion-icon name="newspaper-outline"></ion-icon></li>
             <li><ion-icon name="notifications-outline"></ion-icon></li>
@@ -17,61 +16,35 @@
     <div>
         <div class="paddistance bannermenu">
             <ul>
-                <li><p>Registro a Eliminar</p></li>
+                <li><p>Venta a Eliminar</p></li>
             </ul>
         </div>
     </div>
 
-    <div class="flexpad">
-
-        <h3>Esta seguro de eliminar el siguiente registro?</h3>
+    <div>
         <div>
-            <h4>Ventas</h4>
-            <hr />
+            <p>¿Estás seguro de que deseas eliminar este venta?</p>
+
             <dl class="dl-horizontal">
                 <dt>
                     @Html.DisplayNameFor(model => model.VentaID)
                 </dt>
-
                 <dd>
                     @Html.DisplayFor(model => model.VentaID)
                 </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Fecha)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Fecha)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.ClienteID)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.ClienteID)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Total)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Total)
-                </dd>
-
+                <!-- Agrega más propiedades del producto si es necesario -->
             </dl>
 
             @using (Html.BeginForm("DeleteVenta", "Ventas", FormMethod.Post, new { id = "deleteForm" }))
             {
                 @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.VentaID)
 
-                <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Volver a la Lista", "ListarVentas", new { @class = "buttons info" })
+                <div class="form-actions">
+                    <input type="submit" value="Eliminar" class="buttons danger" />
+                    @Html.ActionLink("Cancelar", "ListarVentas", null, new { @class = "buttons info" })
                 </div>
             }
         </div>
-        </div>
+    </div>
 </main>

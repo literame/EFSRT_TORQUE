@@ -116,9 +116,9 @@
                     @Html.DisplayFor(modelItem => item.Direccion)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditProveedor", new { id = item.ProveedorID }, new { @class = "buttons info" }) |
-                    @Html.ActionLink("Details", "DetailsProveedor", new { id = item.ProveedorID }, new { @class = "buttons warning" }) |
-                    @Html.ActionLink("Delete", "DeleteProveedor", new { id = item.ProveedorID }, new { @class = "buttons danger" })
+                    @Html.ActionLink("Editar", "EditProveedor", new { id = item.ProveedorID }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Detalles", "DetailsProveedor", new { id = item.ProveedorID }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Eliminar", "DeleteProveedor", new { id = item.ProveedorID }, new { @class = "buttons danger" })
                 </td>
             </tr>
         }

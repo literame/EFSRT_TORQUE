@@ -116,7 +116,7 @@ namespace EFSRT_TORQUE.Controllers
         }
 
 
-        // Método para eliminar un Ventas
+        // Método para eliminar una venta
         string EliminarVenta(int ventaId)
         {
             string mensaje = "";
@@ -128,22 +128,46 @@ namespace EFSRT_TORQUE.Controllers
                     SqlCommand cmd = new SqlCommand("usp_eliminarVenta", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@ventaId", ventaId);
+
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha eliminado {i} socio(s)";
+                    mensaje = $"Se ha eliminado {i} venta(s)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message;
+                    mensaje = $"Error: {ex.Message}";
+                    // Puedes manejar el error aquí o registrar en un sistema de logging
                 }
                 finally
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
 
-           string ActualizarVentas(Ventas reg)
+        // Acción para eliminar una venta
+
+        public ActionResult DeleteVenta(int id)
+        {
+            Ventas venta = Venta().FirstOrDefault(c => c.VentaID == id);
+            if (venta == null)
+            {
+                return HttpNotFound();
+            }
+            return View(venta);
+        }
+
+        // Acción para eliminar una venta (POST)
+        [HttpPost, ActionName("DeleteVenta")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            string mensaje = EliminarVenta(id);
+            ViewBag.mensaje = mensaje;
+            return RedirectToAction("ListarVentas");
+        }
+
+        string ActualizarVentas(Ventas reg)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -191,12 +215,6 @@ namespace EFSRT_TORQUE.Controllers
                 return RedirectToAction("ListarVentas");
             }
             return View("EditVenta", reg);
-        }
-
-        public ActionResult DeleteVenta(int id)
-        {
-            ViewBag.mensaje = EliminarVenta(id);
-            return View("DeleteVenta");
         }
 
 

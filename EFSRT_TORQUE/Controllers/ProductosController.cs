@@ -115,7 +115,8 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
-        string EliminarProducto(string ProductoID)
+        // Método para eliminar un producto
+        string EliminarProducto(int productoId)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -125,22 +126,45 @@ namespace EFSRT_TORQUE.Controllers
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("usp_eliminarProducto", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@productoId", ProductoID);
+                    cmd.Parameters.AddWithValue("@productoId", productoId);
+
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha eliminado {i} socio(s)";
+                    mensaje = $"Se ha eliminado {i} producto(s)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message;
+                    mensaje = $"Error: {ex.Message}";
+                    // Puedes manejar el error aquí o registrar en un sistema de logging
                 }
                 finally
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
         }
 
+        // Acción para eliminar un producto
+
+        public ActionResult DeleteProducto(int id)
+        {
+            Productos producto = Producto().FirstOrDefault(c => c.ProductoID == id);
+            if (producto == null)
+            {
+                return HttpNotFound();
+            }
+            return View(producto);
+        }
+
+        // Acción para eliminar un producto (POST)
+        [HttpPost, ActionName("DeleteProducto")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            string mensaje = EliminarProducto(id);
+            ViewBag.mensaje = mensaje;
+            return RedirectToAction("ListarProductos");
+        }
 
         string ActualizarProducto(Productos reg)
         {
@@ -172,17 +196,6 @@ namespace EFSRT_TORQUE.Controllers
                 return mensaje;
             }
         }
-
-
-
-
-        // Acción para eliminar un Productos
-        public ActionResult DeleteProducto(string id)
-        {
-            ViewBag.mensaje = EliminarProducto(id);
-            return View("DeleteProducto");
-        }
-
 
         // Acción para editar un producto (formulario)
         public ActionResult EditProducto(int id)

@@ -1,12 +1,13 @@
 ﻿@model EFSRT_TORQUE.Models.Productos
 
 @{
-    ViewBag.Title = "Agregar Producto";
+    ViewBag.Title = "Agregar Productos";
 }
+
 <main class="body">
 
     <div class="txtTittle">
-        <p class="paddistance">Agregar Un Producto</p>
+        <p class="paddistance">Agregar Productos</p>
         <ul>
             <li><ion-icon name="newspaper-outline"></ion-icon></li>
             <li><ion-icon name="notifications-outline"></ion-icon></li>
@@ -16,7 +17,7 @@
     <div>
         <div class="paddistance bannermenu">
             <ul>
-                <li><p>Nuevo Producto</p></li>
+                <li><p>Nuevo Productos</p></li>
             </ul>
         </div>
     </div>
@@ -25,35 +26,56 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Descripcion)
-            @Html.TextBoxFor(m => m.Descripcion, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Descripcion)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Precio)
-            @Html.TextBoxFor(m => m.Precio, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Precio)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.Stock)
-            @Html.TextBoxFor(m => m.Stock, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Stock)
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(m => m.ProveedorID)
-            @Html.TextBoxFor(m => m.ProveedorID, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.ProveedorID)
-        </div>
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="flexItem">
-            <button type="submit" class = "buttons info">Agregar Producto</button>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-            @Html.ActionLink("Volver a la Lista", "ListarProductos", new { }, new { @class = "buttons warning" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Precio, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Precio, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Precio, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Stock, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
+            <div class="form-group">
+                @Html.LabelFor(model => model.ProveedorID, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ProveedorID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ProveedorID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Agregar" class="buttons warning" />
+                </div>
+            </div>
         </div>
     }
+
+    <div>
+
+        @Html.ActionLink("Volver a la Lista", "ListarProductos", null, new { @class = "buttons info" })
+
+
+    </div>
 
 </main>
 @section Scripts {

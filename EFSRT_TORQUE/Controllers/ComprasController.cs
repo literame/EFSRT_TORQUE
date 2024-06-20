@@ -114,7 +114,8 @@ namespace EFSRT_TORQUE.Controllers
 
 
 
-        string EliminarCompra(int CompraId)
+        // Método para eliminar una compra
+        string EliminarCompra(int compraId)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -124,20 +125,44 @@ namespace EFSRT_TORQUE.Controllers
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("usp_eliminarCompra", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@compraId", CompraId);
+                    cmd.Parameters.AddWithValue("@compraId", compraId);
+
                     int i = cmd.ExecuteNonQuery();
-                    mensaje = $"Se ha eliminado {i} socio(s)";
+                    mensaje = $"Se ha eliminado {i} compra(s)";
                 }
                 catch (SqlException ex)
                 {
-                    mensaje = ex.Message;
+                    mensaje = $"Error: {ex.Message}";
+                    // Puedes manejar el error aquí o registrar en un sistema de logging
                 }
                 finally
                 {
                     conn.Close();
                 }
-                return mensaje;
             }
+            return mensaje;
+        }
+
+        // Acción para eliminar una compra
+
+        public ActionResult DeleteCompra(int id)
+        {
+            Compras compra = Compra().FirstOrDefault(c => c.CompraID == id);
+            if (compra == null)
+            {
+                return HttpNotFound();
+            }
+            return View(compra);
+        }
+
+        // Acción para eliminar una compra (POST)
+        [HttpPost, ActionName("DeleteCompra")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+            string mensaje = EliminarCompra(id);
+            ViewBag.mensaje = mensaje;
+            return RedirectToAction("ListarCompras");
         }
 
 
@@ -192,14 +217,6 @@ namespace EFSRT_TORQUE.Controllers
             return View("EditCompra", reg);
         }
 
-
-
-        // Acción para eliminar un Compra
-        public ActionResult DeleteCompra(int id)
-        {
-            ViewBag.mensaje = EliminarCompra(id);
-            return View("DeleteCompra");
-        }
 
         // Acción para ver los detalles de un Compras
         public ActionResult DetailsCompra(int id)

@@ -76,7 +76,7 @@
             <div>
                 <a>
 
-                    @Html.ActionLink("Nuevo", "CreateCompra", new { area = "" }, new { @class = "addcotizacion" })
+                    @Html.ActionLink("Agregar Compra", "CreateCompra", new { area = "" }, new { @class = "addcotizacion" })
                 </a>
             </div>
         </div>
@@ -115,9 +115,9 @@
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @Html.ActionLink("Editar", "EditCompra", new { id=item.CompraID  }, new { @class = "buttons info" }) |
-                    @Html.ActionLink("Detalles", "DetailsCompra", new {  id=item.CompraID }, new { @class = "buttons warning" }) |
-                    @Html.ActionLink("Eliminar", "DeleteCompra", new {  id=item.CompraID }, new { @class = "buttons danger" })
+                    @Html.ActionLink("Editar", "EditCompra", new { id = item.CompraID }, new { @class = "buttons info" }) |
+                    @Html.ActionLink("Detalles", "DetailsCompra", new { id = item.CompraID }, new { @class = "buttons warning" }) |
+                    @Html.ActionLink("Eliminar", "DeleteCompra", new { id = item.CompraID }, new { @class = "buttons danger" })
 
                 </td>
             </tr>
