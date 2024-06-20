@@ -47,18 +47,13 @@
         </div>
 
         <div class="flexItem">
-            <button type="submit">Agregar Producto</button>
+            <button type="submit" class = "buttons info">Agregar Producto</button>
 
-            @Html.ActionLink("Volver a la Lista", "ListarProductos", new { @class = "buttons info" })
+            @Html.ActionLink("Volver a la Lista", "ListarProductos", new { }, new { @class = "buttons warning" })
 
 
         </div>
     }
-
-    <div id="cube">
-        a
-
-    </div>
 
 </main>
 @section Scripts {

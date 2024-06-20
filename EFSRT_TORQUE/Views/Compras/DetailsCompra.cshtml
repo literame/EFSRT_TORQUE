@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "EditCompra", new {  id= Model.CompraID  }, new { @class = "buttons warning" }) |
+    @Html.ActionLink("Volver A La Lista", "Index", new { @class = "buttons info" })
 </p>

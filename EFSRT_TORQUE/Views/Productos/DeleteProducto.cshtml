@@ -24,7 +24,7 @@
     </div>
 
 
-    <div class="flexpad">
+    <div>
         <h3>Esta seguro de eliminar el siguiente registro?</h3>
         <div>
             <h4>Productos</h4>
@@ -77,8 +77,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
-                    <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Volver a la lista", "ListarProductos", new { @class = "buttons info" })
+                    <input type="submit" value="Delete" class="buttons danger" /> |
+                    @Html.ActionLink("Volver a la lista", "ListarProductos", new { }, new { @class = "buttons info" })
                 </div>
             }
         </div>

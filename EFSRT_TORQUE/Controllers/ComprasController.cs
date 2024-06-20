@@ -192,7 +192,16 @@ namespace EFSRT_TORQUE.Controllers
             return View("DeleteCompra");
         }
 
-       
+        // Acción para eliminar un cliente (POST)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id)
+        {
+            string mensaje = EliminarCompra(id);
+            ViewBag.mensaje = mensaje;
+            return RedirectToAction("ListarCCompras");
+        }
+
         // Acción para ver los detalles de un Compras
         public ActionResult DetailsCompra(int id)
         {

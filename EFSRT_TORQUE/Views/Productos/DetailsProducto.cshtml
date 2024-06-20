@@ -69,8 +69,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "EditProducto", new { id = Model.ProductoID }) |
-        @Html.ActionLink("Volver a la lista", "ListaProducto")
+        @Html.ActionLink("Edit", "EditProducto", new { id = Model.ProductoID }, new { @class = "buttons warning" }) |
+        @Html.ActionLink("Volver a la lista", "ListarProducto", new { }, new { @class = "buttons info" })
     </p>
 
 
