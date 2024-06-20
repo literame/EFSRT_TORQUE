@@ -13,8 +13,8 @@
 
     .buttons.danger {
         background-color: #e74c3c; /* Rojo */
-    color: white;
-}
+        color: white;
+    }
 
 
         .buttons.danger:hover {
@@ -36,30 +36,30 @@
             cursor: not-allowed;
         }
 
-.buttons.warning {
-    background-color: #f39c12; /* Naranja */
-    color: white;
-}
-
-/* Efecto al pasar el ratón por encima */
-    .buttons.warning:hover {
-        background-color: #e67e22; /* Naranja más oscuro */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    .buttons.warning {
+        background-color: #f39c12; /* Naranja */
+        color: white;
     }
 
-/* Efecto al hacer clic */
-    .buttons.warning:active {
-        background-color: #d35400; /* Naranja aún más oscuro */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        transform: translateY(2px);
-    }
+        /* Efecto al pasar el ratón por encima */
+        .buttons.warning:hover {
+            background-color: #e67e22; /* Naranja más oscuro */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-/* Estilo para el botón deshabilitado */
-    .buttons.warning:disabled {
-        background-color: #f39c12;
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
+        /* Efecto al hacer clic */
+        .buttons.warning:active {
+            background-color: #d35400; /* Naranja aún más oscuro */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transform: translateY(2px);
+        }
+
+        /* Estilo para el botón deshabilitado */
+        .buttons.warning:disabled {
+            background-color: #f39c12;
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
 
 
     .buttons.info {
@@ -67,20 +67,20 @@
         color: white;
     }
 
-    /* Efecto al pasar el ratón por encima */
+        /* Efecto al pasar el ratón por encima */
         .buttons.info:hover {
             background-color: #2980b9; /* Azul más oscuro */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-    /* Efecto al hacer clic */
+        /* Efecto al hacer clic */
         .buttons.info:active {
             background-color: #1c6ea4; /* Azul aún más oscuro */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             transform: translateY(2px);
         }
 
-    /* Estilo para el botón deshabilitado */
+        /* Estilo para el botón deshabilitado */
         .buttons.info:disabled {
             background-color: #3498db;
             opacity: 0.6;

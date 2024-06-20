@@ -6,7 +6,7 @@
 <main class="body">
 
     <div class="txtTittle">
-        <p class="paddistance">TorqueG64 SAC</p>
+        <p class="paddistance">Agregar Un Producto</p>
         <ul>
             <li><ion-icon name="newspaper-outline"></ion-icon></li>
             <li><ion-icon name="notifications-outline"></ion-icon></li>
@@ -45,12 +45,18 @@
             @Html.TextBoxFor(m => m.ProveedorID, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.ProveedorID)
         </div>
-        <button type="submit" class="btn btn-primary">Agregar Producto</button>
+
+        <div class="flexItem">
+            <button type="submit">Agregar Producto</button>
+
+            @Html.ActionLink("Volver a la Lista", "ListarProductos", new { @class = "buttons info" })
+
+
+        </div>
     }
 
-    <div>
-
-        @Html.ActionLink("Volver a la Lista", "ListarProductos")
+    <div id="cube">
+        a
 
     </div>
 

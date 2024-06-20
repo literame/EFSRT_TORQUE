@@ -44,7 +44,7 @@
 
 
 .itemlist {
-    flex:1;
+    flex: 1;
     display: flex;
     flex-direction: column;
     /* gap: 16px; */
@@ -390,5 +390,33 @@ td {
     text-decoration: none;
     list-style: none;
     font-family: "Roboto", sans-serif;
-    color:black;
+    color: black;
+}
+
+
+
+.flexpad {
+    margin: 5px;
+    padding 10px;
+    background-color: red;
+    width 100%;
+    height: 300px
+}
+
+
+
+.itmdetail{
+
+    display:flex;
+    flex-direction:row;
+    width: 500px;
+    height:80px;
+
+}
+
+.itmdetail dt{
+    height:100%;
+    color:white;
+    background-color:aquamarine;
+    margin: 5px;
 }

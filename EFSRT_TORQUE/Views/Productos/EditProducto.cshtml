@@ -4,6 +4,10 @@
     ViewBag.Title = "EditProducto";
 }
 
+<head>
+    <link href="~/Content/productos/StyleProductos.css" rel="stylesheet" />
+    <link href="~/Content/alerta.css" rel="stylesheet" />
+</head>
 <main>
 
     <div class="txtTittle">
@@ -79,7 +83,7 @@
     }
 
     <div>
-        @Html.ActionLink("Volver a la Lista", "ListarProductos")
+        @Html.ActionLink("Volver a la Lista", "ListarProductos", new { @class = "buttons info" })
     </div>
 
 </main>

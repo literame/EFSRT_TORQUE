@@ -1,56 +1,78 @@
 ﻿@model EFSRT_TORQUE.Models.Compras
 
 @{
-    ViewBag.Title = "DeleteCompras";
+    ViewBag.Title = "Eliminar Compra";
 }
 
-<h2>DeleteCompras</h2>
+<main>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Compras</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CompraID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CompraID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProveedorID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProveedorID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Volver a la lista", "ListarCompras", new { @class = "buttons info" })
+    <div class="txtTittle">
+        <p class="paddistance">Eliminar Compra</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+        </ul>
+    </div>
+    <div>
+        <div class="paddistance bannermenu">
+            <ul>
+                <li><p>Registro a Eliminar</p></li>
+            </ul>
         </div>
-    }
-</div>
+    </div>
+
+    <div class="flexpad">
+
+        <h3>Esta seguro de eliminar el siguiente registro?</h3>
+        <div>
+            <h4>Compras</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CompraID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CompraID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Fecha)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProveedorID)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProveedorID)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Total)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Total)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Volver a la lista", "ListarCompras", new { @class = "buttons info" })
+                </div>
+            }
+        </div>
+
+        </div>
+</main>

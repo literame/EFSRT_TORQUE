@@ -4,47 +4,71 @@
     ViewBag.Title = "DetailsVenta";
 }
 
-<h2>DetailsVenta</h2>
+<main>
+    <div class="txtTittle">
+        <p class="paddistance">Detalles de Venta</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+        </ul>
+    </div>
+    <div>
+        <div class="paddistance bannermenu">
+            <ul>
+                <li><p>Informacion de los Datos</p></li>
+            </ul>
+        </div>
+    </div>
 
-<div>
-    <h4>Ventas</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.VentaID)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VentaID)
-        </dd>
+    <div>
+        <h4>Ventas</h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="itmdetail">
+                <dt>
+                    @Html.DisplayNameFor(model => model.VentaID)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.VentaID)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClienteID)
-        </dt>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClienteID)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.ClienteID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ClienteID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Total)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditVenta", new { id = Model.VentaID }) |
+        @Html.ActionLink("Volver a la lista", "ListarVentas")
+    </p>
+
+
+</main>
