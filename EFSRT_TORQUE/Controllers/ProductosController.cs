@@ -70,7 +70,7 @@ namespace EFSRT_TORQUE.Controllers
                 try
                 {
                      conn.Open();
-                     SqlCommand cmd = new SqlCommand("usp_agregarProductto", conn);
+                     SqlCommand cmd = new SqlCommand("usp_agregarProducto", conn);
                      cmd.CommandType = CommandType.StoredProcedure;
                      cmd.Parameters.AddWithValue("@productoId", reg.ProductoID);
                      cmd.Parameters.AddWithValue("@descripcion", reg.Descripcion);

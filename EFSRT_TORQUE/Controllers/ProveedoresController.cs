@@ -116,7 +116,7 @@ namespace EFSRT_TORQUE.Controllers
             return View("CreateProveedor", reg);
         }
 
-        string EliminarProveedor(string ProveedorID)
+        string EliminarProveedor(int ProveedorID)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -196,12 +196,11 @@ namespace EFSRT_TORQUE.Controllers
         }
 
 
-        public ActionResult DeleteProveedor(string id)
+        public ActionResult DeleteProveedor(int id)
         {
             ViewBag.mensaje = EliminarProveedor(id);
-            return View("DeleteProveedores");
+            return View("DeleteProveedor");
         }
-
 
         // Acción para ver los detalles de un Proveedores
         public ActionResult DetailsProveedor(int id)

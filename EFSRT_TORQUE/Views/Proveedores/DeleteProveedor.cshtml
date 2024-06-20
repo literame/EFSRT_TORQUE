@@ -71,13 +71,13 @@
 
             </dl>
 
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("DeleteProveedor", "Proveedores", FormMethod.Post, new { id = "deleteForm" }))
             {
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions no-color">
                     <input type="submit" value="Delete" class="btn btn-default" /> |
-                    @Html.ActionLink("Volver a la lista", "ListarProveedor", new { @class = "buttons info" })
+                    @Html.ActionLink("Volver a la lista", "ListarProveedores", new { @class = "buttons info" })
                 </div>
             }
         </div>

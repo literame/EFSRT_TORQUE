@@ -117,7 +117,7 @@ namespace EFSRT_TORQUE.Controllers
 
 
         // Método para eliminar un Ventas
-        string EliminarVenta(string ventasId)
+        string EliminarVenta(int ventaId)
         {
             string mensaje = "";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
@@ -127,7 +127,7 @@ namespace EFSRT_TORQUE.Controllers
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("usp_eliminarVenta", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@ventasId", ventasId);
+                    cmd.Parameters.AddWithValue("@ventaId", ventaId);
                     int i = cmd.ExecuteNonQuery();
                     mensaje = $"Se ha eliminado {i} socio(s)";
                 }
@@ -193,7 +193,7 @@ namespace EFSRT_TORQUE.Controllers
             return View("EditVenta", reg);
         }
 
-        public ActionResult DeleteVenta(string id)
+        public ActionResult DeleteVenta(int id)
         {
             ViewBag.mensaje = EliminarVenta(id);
             return View("DeleteVenta");

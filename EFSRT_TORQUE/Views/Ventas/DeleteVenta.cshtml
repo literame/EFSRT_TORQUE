@@ -63,7 +63,7 @@
 
             </dl>
 
-            @using (Html.BeginForm())
+            @using (Html.BeginForm("DeleteVenta", "Ventas", FormMethod.Post, new { id = "deleteForm" }))
             {
                 @Html.AntiForgeryToken()
 
