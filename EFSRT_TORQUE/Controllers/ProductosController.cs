@@ -17,28 +17,42 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Productos> Producto()
         {
             List<Productos> prodTemporal = new List<Productos>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
-            conn.Open();
-
-            string query = "SELECT * FROM Productos";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
-                prodTemporal.Add(new Productos()
+                string notificacion = "";
+                try
                 {
-                    ProductoID = rdr.GetInt32(0),
-                    Descripcion = rdr.GetString(1),
-                    Precio = rdr.GetDecimal(2),
-                    Stock = rdr.GetInt32(3),
-                    ProveedorID = rdr.GetInt32(4)
-                });
-            }
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_listarProductos", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-            rdr.Close();
-            conn.Close();
-            return prodTemporal;
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        prodTemporal.Add(new Productos()
+                        {
+                            ProductoID = rdr.GetInt32(0),
+                            Descripcion = rdr.GetString(1),
+                            Precio = rdr.GetDecimal(2),
+                            Stock = rdr.GetInt32(3),
+                            ProveedorID = rdr.GetInt32(4)
+                        });
+                    }
+
+                    rdr.Close();
+                }
+
+                catch (SqlException ex)
+                {
+                    notificacion = ex.Message;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+                return prodTemporal;
+            }
         }
 
         // GET: Productos

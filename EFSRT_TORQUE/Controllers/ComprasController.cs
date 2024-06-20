@@ -16,33 +16,42 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Compras> Compra()
         {
             List<Compras> compTemporal = new List<Compras>();
-            SqlConnection conn = null;
-            conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
-                );
-            conn.Open();
-
-            //definimos un comando: SELECT * FROM Compras , este listara todos los elementos de la bd
-            string query = "SELECT * FROM Compras";
-            SqlCommand cmd = new SqlCommand(query, conn);
-
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
-                // Compras() => sale de el nombre definido en el enumerable IEnumerable<Compras>
-                compTemporal.Add(new Compras()
+                string notificacion = "";
+                try
                 {
-                    CompraID = rdr.GetInt32(0),
-                    Fecha = rdr.GetDateTime(1),
-                    ProveedorID = rdr.GetInt32(2),
-                    Total = rdr.GetDecimal(3),
-                });
-            }
-            rdr.Close();
-            conn.Close();
-            return compTemporal;
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_listarComprar", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    SqlDataReader rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        compTemporal.Add(new Compras()
+                        {
+                            CompraID = rdr.GetInt32(0),
+                            Fecha = rdr.GetDateTime(1),
+                            ProveedorID = rdr.GetInt32(2),
+                            Total = rdr.GetDecimal(3),
+                        });
+                    }
+                }
+                catch (SqlException ex)
+                {
+                    notificacion = ex.Message;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+                return compTemporal;
+            } 
         }
+
+
+
         // GET: Compras
         //txt saludos
         public ActionResult ListarCompras()

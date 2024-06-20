@@ -17,31 +17,43 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Proveedores> Proveedor()
         {
             List<Proveedores> provTemporal = new List<Proveedores>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
-            conn.Open();
-
-            //definimos un comando: SELECT * FROM Proveedores , este listara todos los elementos de la bd
-            string query = "SELECT * FROM Proveedores";
-            SqlCommand cmd = new SqlCommand(query, conn);
-
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
-                // Proveedores() => sale de el nombre definido en el enumerable IEnumerable<Proveedores>
-                provTemporal.Add(new Proveedores()
+                string notificacion = "";
+                try
                 {
-                    ProveedorID = rdr.GetInt32(0),
-                    Nombre = rdr.GetString(1),
-                    Telefono = rdr.GetString(2),
-                    Email = rdr.GetString(3),
-                    Direccion = rdr.GetString(4),
-                });
-            }
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_listarProveedores", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-            rdr.Close();
-            conn.Close();
-            return provTemporal;
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        // Proveedores() => sale de el nombre definido en el enumerable IEnumerable<Proveedores>
+                        provTemporal.Add(new Proveedores()
+                        {
+                            ProveedorID = rdr.GetInt32(0),
+                            Nombre = rdr.GetString(1),
+                            Telefono = rdr.GetString(2),
+                            Email = rdr.GetString(3),
+                            Direccion = rdr.GetString(4),
+                        });
+                    }
+
+                    rdr.Close();
+                }
+                catch (SqlException ex)
+                {
+                    notificacion = ex.Message;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+                return provTemporal;
+            }
         }
 
         // GET: Proveedores

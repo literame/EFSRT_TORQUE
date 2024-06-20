@@ -17,28 +17,42 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Clientes> Cliente()
         {
             List<Clientes> cliTemporal = new List<Clientes>();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString);
-            conn.Open();
-
-            string query = "SELECT * FROM Clientes";
-            SqlCommand cmd = new SqlCommand(query, conn);
-
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
-                cliTemporal.Add(new Clientes()
+                string notificacion = "";
+                try
                 {
-                    ClienteID = rdr.GetString(0),
-                    Nombre = rdr.GetString(1),
-                    Telefono = rdr.GetString(2),
-                    Email = rdr.GetString(3),
-                    Direccion = rdr.GetString(4),
-                });
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_listarCliente", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        cliTemporal.Add(new Clientes()
+                        {
+                            ClienteID = rdr.GetString(0),
+                            Nombre = rdr.GetString(1),
+                            Telefono = rdr.GetString(2),
+                            Email = rdr.GetString(3),
+                            Direccion = rdr.GetString(4),
+                        });
+                    }
+                    rdr.Close();
+                }
+
+                catch (SqlException ex)
+                {
+                    notificacion = ex.Message;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+                return cliTemporal;
             }
-            rdr.Close();
-            conn.Close();
-            return cliTemporal;
         }
 
         // Método para agregar un cliente

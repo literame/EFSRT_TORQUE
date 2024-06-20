@@ -17,33 +17,42 @@ namespace EFSRT_TORQUE.Controllers
         IEnumerable<Ventas> Venta()
         {
             List<Ventas> ventasTemporal = new List<Ventas>();
-            SqlConnection conn = null;
-            conn = new SqlConnection(
-                ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString
-                );
-            conn.Open();
-
-            //definimos un comando: SELECT * FROM Ventas , este listara todos los elementos de la bd
-            string query = "SELECT * FROM Ventas";
-            SqlCommand cmd = new SqlCommand(query, conn);
-
-            SqlDataReader rdr = cmd.ExecuteReader();
-
-            while (rdr.Read())
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MiConexion"].ConnectionString))
             {
-                // Ventas() => sale de el nombre definido en el enumerable IEnumerable<Ventas>
-                ventasTemporal.Add(new Ventas()
+                string notificacion = "";
+                try
                 {
-                    VentaID = rdr.GetInt32(0),
-                    Fecha = rdr.GetDateTime(1),
-                    ClienteID = rdr.GetString(2),
-                    Total = rdr.GetDecimal(3),
-                });
-            }
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_listarVentas", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-            rdr.Close();
-            conn.Close();
-            return ventasTemporal;
+                    SqlDataReader rdr = cmd.ExecuteReader();
+
+                    while (rdr.Read())
+                    {
+                        // Ventas() => sale de el nombre definido en el enumerable IEnumerable<Ventas>
+                        ventasTemporal.Add(new Ventas()
+                        {
+                            VentaID = rdr.GetInt32(0),
+                            Fecha = rdr.GetDateTime(1),
+                            ClienteID = rdr.GetString(2),
+                            Total = rdr.GetDecimal(3),
+                        });
+                    }
+
+                    rdr.Close();
+                }
+                catch (SqlException ex)
+                {
+                    notificacion = ex.Message;
+                }
+                finally
+                {
+
+                    conn.Close();
+                }
+                return ventasTemporal;
+            }
         }
 
         // GET: Ventas
