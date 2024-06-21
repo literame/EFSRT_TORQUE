@@ -127,10 +127,12 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Controllers\ProveedoresController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\VentasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\DetallesCompra.cs" />
     <Compile Include="Models\Compras.cs" />
     <Compile Include="Models\DetallesVenta.cs" />
@@ -200,6 +202,8 @@
     <Content Include="Views\Ventas\DetailsVenta.cshtml" />
     <Content Include="Views\Proveedores\EditProveedor.cshtml" />
     <Content Include="Views\Proveedores\ListarProveedores.cshtml" />
+    <Content Include="Views\Usuarios\Registro.cshtml" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
