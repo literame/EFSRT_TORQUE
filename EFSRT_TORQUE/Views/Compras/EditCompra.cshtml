@@ -1,7 +1,7 @@
 ﻿@model EFSRT_TORQUE.Models.Compras
 
 @{
-    ViewBag.Title = "EditCompras";
+    ViewBag.Title = "Editar Compras";
 }
 
 <main>
@@ -65,14 +65,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="buttons warning" />
                 </div>
             </div>
         </div>
     }
 
     <div>
-        @Html.ActionLink("Volver a la Lista", "ListarCompras")
+        @Html.ActionLink("Volver a la Lista", "ListarCompras", null, new { @class = "buttons info" })
     </div>
 
 

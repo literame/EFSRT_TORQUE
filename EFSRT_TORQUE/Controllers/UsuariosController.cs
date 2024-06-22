@@ -28,7 +28,7 @@ namespace EFSRT_TORQUE.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO Usuario (NombreUsuario, Contrasena, Nombre, Rol) VALUES (@NombreUsuario, @Contrasena, @Nombre, @Rol)", conn))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO Usuarios (NombreUsuario, Contrasena, Nombre, Rol) VALUES (@NombreUsuario, @Contrasena, @Nombre, @Rol)", conn))
                 {
                     cmd.Parameters.AddWithValue("@NombreUsuario", usuario.NombreUsuario);
                     cmd.Parameters.AddWithValue("@Contrasena", usuario.Contrasena); // Nota: En un proyecto real, deberías hash la contraseña
@@ -57,6 +57,7 @@ namespace EFSRT_TORQUE.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
+            string usuario = "";
             // Simulación de autenticación
             string query = "SELECT NombreUsuario FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contrasena";
 
@@ -73,6 +74,8 @@ namespace EFSRT_TORQUE.Controllers
                     // El usuario ha sido autenticado correctamente
                     FormsAuthentication.SetAuthCookie(model.NombreUsuario, model.RememberMe);
                     conn.Close();
+                    usuario = model.NombreUsuario.ToString(); 
+                    ViewBag.Usuario = usuario;
                     return RedirectToAction("Index", "Home");
                 }
                 else

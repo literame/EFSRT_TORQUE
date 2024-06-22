@@ -1,7 +1,7 @@
 ﻿@model EFSRT_TORQUE.Models.Proveedores
 
 @{
-    ViewBag.Title = "DetailsProveedor";
+    ViewBag.Title = "Detalle Proveedor";
 }
 
 <main>
@@ -71,8 +71,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink("Editar", "EditProveedor", new { id = Model.ProveedorID  }, new { @class = "buttons warning" }) |
+        @Html.ActionLink("Volver a la lista", "ListarProveedores", null, new { @class = "buttons info" })
     </p>
 
 

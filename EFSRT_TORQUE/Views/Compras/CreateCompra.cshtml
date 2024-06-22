@@ -41,12 +41,12 @@
             @Html.ValidationMessageFor(m => m.Total)
         </div>
         
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="submit" class="buttons warning">Agregar</button>
     }
 
     <div>
 
-        @Html.ActionLink("Volver a la Lista", "ListarCompras")
+        @Html.ActionLink("Volver a la Lista", "ListarCompras", null, new { @class = "buttons info" })
 
     </div>
 

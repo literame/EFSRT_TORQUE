@@ -45,12 +45,12 @@
             @Html.TextBoxFor(m => m.Direccion, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Direccion)
         </div>
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="submit" class="buttons warning">Agregar</button>
     }
 
     <div>
 
-        @Html.ActionLink("Volver a la Lista", "ListarProveedores")
+        @Html.ActionLink("Volver a la Lista", "ListarProveedores",null, new { @class = "buttons info" })
 
     </div>
 

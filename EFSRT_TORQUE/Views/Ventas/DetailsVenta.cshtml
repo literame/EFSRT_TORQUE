@@ -1,7 +1,7 @@
 ﻿@model EFSRT_TORQUE.Models.Ventas
 
 @{
-    ViewBag.Title = "DetailsVenta";
+    ViewBag.Title = "Detalle Venta";
 }
 
 <main>
@@ -66,8 +66,8 @@
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "EditVenta", new { id = Model.VentaID }) |
-        @Html.ActionLink("Volver a la lista", "ListarVentas")
+        @Html.ActionLink("Editar", "EditVenta", new { id = Model.VentaID }, new { @class = "buttons warning" }) |
+        @Html.ActionLink("Volver a la lista", "ListarVentas",null, new { @class = "buttons info" })
     </p>
 
 

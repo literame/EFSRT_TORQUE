@@ -154,6 +154,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\controls\ocultarDiv.js" />
+    <Content Include="Scripts\controls\visibilidadNav.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

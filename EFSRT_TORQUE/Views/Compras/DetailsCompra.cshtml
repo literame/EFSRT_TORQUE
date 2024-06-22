@@ -1,50 +1,69 @@
 ﻿@model EFSRT_TORQUE.Models.Compras
 
 @{
-    ViewBag.Title = "DetailsCompras";
+    ViewBag.Title = "Detalle Compras";
 }
 
-<h2>DetailsCompras</h2>
+<main>
 
-<div>
-    <h4>Compras</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CompraID)
-        </dt>
+    <div class="txtTittle">
+        <p class="paddistance">Detalles Compras</p>
+        <ul>
+            <li><ion-icon name="newspaper-outline"></ion-icon></li>
+            <li><ion-icon name="notifications-outline"></ion-icon></li>
+            <li><ion-icon name="person-outline"></ion-icon></li>
+        </ul>
+    </div>
+    <div>
+        <div class="paddistance bannermenu">
+            <ul>
+                <li><p>Informacion de los Datos</p></li>
+            </ul>
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CompraID)
-        </dd>
+    <div>
+        <h4>Compras</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CompraID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Fecha)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.CompraID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Fecha)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Fecha)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProveedorID)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Fecha)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProveedorID)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ProveedorID)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ProveedorID)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Total)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editar", "EditCompra", new {  id= Model.CompraID  }, new { @class = "buttons warning" }) |
-    @Html.ActionLink("Volver A La Lista", "Index", new { @class = "buttons info" })
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.Total)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "EditCompra", new { id = Model.CompraID }, new { @class = "buttons warning" }) |
+        @Html.ActionLink("Volver A La Lista", "ListarCompras", null, new { @class = "buttons info" })
+    </p>
+
+
+</main>
