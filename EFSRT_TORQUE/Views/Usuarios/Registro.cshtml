@@ -6,58 +6,64 @@
 
 
 <main id="Loggeo">
-    <h2>Registro</h2>
+    <h2 class="tituloreg">Registro</h2>
 
     @using (Html.BeginForm("Registro", "Usuarios", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>Usuario</h4>
+            <h4 class="tituloreg">Usuario</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="boxitem">
+                @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "itemText" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "inputsstyle" } })
                     @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="boxitem">
+                @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "itemText" })
                 <div class="col-md-10">
-                    @Html.PasswordFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.PasswordFor(model => model.Contrasena, new { htmlAttributes = new { @class = "inputsstyle" } })
                     @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="boxitem">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "itemText" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "inputsstyle" } })
                     @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="boxitem">
+                @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "itemText" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Rol, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Rol, new { htmlAttributes = new { @class = "inputsstyle" } })
                     @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Registrarse" class="btn btn-default" />
+                    <input type="submit" value="Registrarse" class="buttons info" />
                 </div>
             </div>
         </div>
     }
+    
+<div class="heigthbottom">
+    @Html.ActionLink("Volver", "Login", "Usuarios", null, new { @class = "buttons info" })
 
-    </main>
+</div>
+
+
+</main>
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }

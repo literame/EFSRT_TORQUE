@@ -24,10 +24,10 @@
 
 
     <div>
-        <h4>Clientes</h4>
+        <h4 class="tituloreg">Clientes</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
+            <dt class="itemText">
                 @Html.DisplayNameFor(model => model.ClienteID)
             </dt>
 
@@ -35,7 +35,7 @@
                 @Html.DisplayFor(model => model.ClienteID)
             </dd>
 
-            <dt>
+            <dt class="itemText">
                 @Html.DisplayNameFor(model => model.Nombre)
             </dt>
 
@@ -43,7 +43,7 @@
                 @Html.DisplayFor(model => model.Nombre)
             </dd>
 
-            <dt>
+            <dt class="itemText">
                 @Html.DisplayNameFor(model => model.Telefono)
             </dt>
 
@@ -51,15 +51,15 @@
                 @Html.DisplayFor(model => model.Telefono)
             </dd>
 
-            <dt>
+            <dt class="itemText">
                 @Html.DisplayNameFor(model => model.Email)
             </dt>
 
-            <dd>
+            <dd >
                 @Html.DisplayFor(model => model.Email)
             </dd>
 
-            <dt>
+            <dt class="itemText">
                 @Html.DisplayNameFor(model => model.Direccion)
             </dt>
 
@@ -74,9 +74,6 @@
         @Html.ActionLink("Volvera la lista", "ListarClientes", null, new { @class = "buttons info" })
     </p>
 
-    <div class="boxitem">
-        <p class="itemText">Titulo</p>
-        <input type="text" name="" id="">
-    </div>
+
 
 </main>

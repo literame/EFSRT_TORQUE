@@ -25,20 +25,20 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Fecha)
+        <div class="boxitem">
+            @Html.LabelFor(m => m.Fecha, new { @class = "itemText" })
             @Html.TextBoxFor(m => m.Fecha, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Fecha)
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.ClienteID)
+        <div class="boxitem">
+            @Html.LabelFor(m => m.ClienteID, new { @class = "itemText" })
             @Html.TextBoxFor(m => m.ClienteID, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.ClienteID)
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(m => m.Total)
+        <div class="boxitem">
+            @Html.LabelFor(m => m.Total, new { @class = "itemText" })
             @Html.TextBoxFor(m => m.Total, new { @class = "form-control" })
             @Html.ValidationMessageFor(m => m.Total)
         </div>

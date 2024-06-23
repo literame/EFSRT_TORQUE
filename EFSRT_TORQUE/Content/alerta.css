@@ -1,9 +1,10 @@
 ﻿
 .buttons {
     font-family: Arial, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     padding: 3px 8px;
-    width: 40px;
+    margin: 2px;
+    min-width: 60px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -92,7 +93,7 @@
 
 
 .boxitem {
-    width: 100%;
+    width: 90%;
     height: 60px;
     background-color: #f1f1f1;
     border: 1px solid #e0e0e0;
@@ -125,4 +126,21 @@
     border: 1px solid white;
     border-bottom: 2px solid #2980b9;
     padding: 0px 10px;
+}
+
+
+.tituloreg {
+    font-size: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    color: #3498db;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+
+
+.heigthbottom{
+    height: 45px;
+
 }
