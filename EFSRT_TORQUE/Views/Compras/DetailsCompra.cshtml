@@ -23,41 +23,48 @@
     </div>
 
     <div>
-        <h4>Compras</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.CompraID)
-            </dt>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.CompraID)
-            </dd>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.CompraID)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Fecha)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.CompraID)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.Fecha)
-            </dd>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ProveedorID)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Fecha)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.ProveedorID)
-            </dd>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.ProveedorID)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Total)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProveedorID)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.Total)
-            </dd>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.Total)
+                </dt>
 
+                <dd>
+                    @Html.DisplayFor(model => model.Total)
+                </dd>
+                </div>
         </dl>
     </div>
     <p>

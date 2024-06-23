@@ -23,49 +23,58 @@
     </div>
 
     <div>
-        <h4>Productos</h4>
+
         <hr />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ProductoID)
-            </dt>
+            <div class="boxitem">
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.ProductoID)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ProductoID)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ProductoID)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Descripcion)
-            </dt>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Descripcion)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Precio)
-            </dt>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.Precio)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Precio)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Precio)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Stock)
-            </dt>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Stock)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Stock)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.ProveedorID)
-            </dt>
+                <dt class="spacetext ">
+                    @Html.DisplayNameFor(model => model.ProveedorID)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.ProveedorID)
-            </dd>
-
+                <dd>
+                    @Html.DisplayFor(model => model.ProveedorID)
+                </dd>
+    </div>
         </dl>
     </div>
     <p>

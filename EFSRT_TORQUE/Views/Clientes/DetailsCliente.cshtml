@@ -24,49 +24,58 @@
 
 
     <div>
-        <h4 class="tituloreg">Clientes</h4>
         <hr />
         <dl class="dl-horizontal">
-            <dt class="itemText">
-                @Html.DisplayNameFor(model => model.ClienteID)
-            </dt>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.ClienteID)
-            </dd>
+                <dt class="spacetext">
+                    @Html.DisplayNameFor(model => model.ClienteID)
+                </dt>
 
-            <dt class="itemText">
-                @Html.DisplayNameFor(model => model.Nombre)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ClienteID)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.Nombre)
-            </dd>
+                <dt class="spacetext">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
 
-            <dt class="itemText">
-                @Html.DisplayNameFor(model => model.Telefono)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.Telefono)
-            </dd>
+                <dt class="spacetext">
+                    @Html.DisplayNameFor(model => model.Telefono)
+                </dt>
 
-            <dt class="itemText">
-                @Html.DisplayNameFor(model => model.Email)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Telefono)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd >
-                @Html.DisplayFor(model => model.Email)
-            </dd>
+                <dt class="spacetext">
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
 
-            <dt class="itemText">
-                @Html.DisplayNameFor(model => model.Direccion)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+            </div>
+            <div class="boxitem">
 
-            <dd>
-                @Html.DisplayFor(model => model.Direccion)
-            </dd>
+                <dt class="spacetext">
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </dt>
 
+                <dd>
+                    @Html.DisplayFor(model => model.Direccion)
+                </dd>
+               </div>
         </dl>
     </div>
     <p>

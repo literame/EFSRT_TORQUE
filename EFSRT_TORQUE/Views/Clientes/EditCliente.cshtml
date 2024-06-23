@@ -27,45 +27,44 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4 class="tituloreg">Clientes</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="boxitem">
-                    @Html.LabelFor(model => model.ClienteID, htmlAttributes: new { @class = "itemText" })
+                    @Html.LabelFor(model => model.ClienteID, htmlAttributes: new { @class = "spacetext" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.ClienteID, new { htmlAttributes = new { @class = "inputsstyle" } })
+                        @Html.EditorFor(model => model.ClienteID, new { htmlAttributes = new { @class = "" } })
                         @Html.ValidationMessageFor(model => model.ClienteID, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="boxitem">
-                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "itemText" })
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "spacetext" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "inputsstyle" } })
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "" } })
                         @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="boxitem">
-                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "itemText" })
+                    @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "spacetext" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "inputsstyle" } })
+                        @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "" } })
                         @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="boxitem">
-                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "itemText" })
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "spacetext" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "inputsstyle" } })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="boxitem">
-                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "itemText" })
+                    @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "spacetext" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "inputsstyle" } })
+                        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "" } })
                         @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
                     </div>
                 </div>
