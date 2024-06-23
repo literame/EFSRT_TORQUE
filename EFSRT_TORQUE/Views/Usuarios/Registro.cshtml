@@ -6,14 +6,14 @@
 
 
 <main id="Loggeo">
-    <h2 class="tituloreg">Registro</h2>
+    <h2 class="tituloreg colorg">Registro</h2>
 
     @using (Html.BeginForm("Registro", "Usuarios", FormMethod.Post))
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4 class="tituloreg">Usuario</h4>
+            <h4 class="fontstyle">Ingresa tus datos para registrarte</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -51,14 +51,14 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Registrarse" class="buttons info" />
+                    <input type="submit" value="Registrarse" class="validar" />
                 </div>
             </div>
         </div>
     }
     
-<div class="heigthbottom">
-    @Html.ActionLink("Volver", "Login", "Usuarios", null, new { @class = "buttons info" })
+<div class="validar">
+    @Html.ActionLink("Volver", "Login", "Usuarios", null, new { @class = "colorw" })
 
 </div>
 
