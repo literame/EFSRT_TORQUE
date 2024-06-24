@@ -23,106 +23,109 @@
                 <ion-icon class="iconbgcolorgreen txtcolorblnk"
                           name="analytics-outline"></ion-icon>
                 <div>
-                    <p>Luis Palomino</p>
-                    <p class="txtcolorgray">Agente</p>
+                    <!--
+    <p>Luis Palomino</p>
+    <p class="txtcolorgray">Agente</p>  -->
+                    <h2> Hola! , @ViewBag.NombreUsuario</h2>
+                    <p> @ViewBag.RolUsuario</p>
                 </div>
-            </section>
+        </section>
 
-            <section class="itemlist">
-                <ul>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="document-text-outline"></ion-icon>
-                        @Html.ActionLink("Vista Cotizaciones", "Index", "Home", null, new { @class = "itmList", id = "homeLink" })
+        <section class="itemlist">
+            <ul>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="document-text-outline"></ion-icon>
+                    @Html.ActionLink("Vista Cotizaciones", "Index", "Home", null, new { @class = "itmList", id = "homeLink" })
 
-                    </li>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Productos", "ListarProductos", "Productos", null, new { @class = "itmList", id = "productoLink" })
-                    </li>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Proveedores", "ListarProveedores", "Proveedores", null, new { @class = "itmList", id = "proveedLink" })
-                    </li>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Clientes", "ListarClientes", "Clientes", null, new { @class = "itmList", id = "clientLink" })
-                    </li>
+                </li>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="file-tray-full-outline"></ion-icon>
+                    @Html.ActionLink("Listar Productos", "ListarProductos", "Productos", null, new { @class = "itmList", id = "productoLink" })
+                </li>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="file-tray-full-outline"></ion-icon>
+                    @Html.ActionLink("Listar Proveedores", "ListarProveedores", "Proveedores", null, new { @class = "itmList", id = "proveedLink" })
+                </li>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="file-tray-full-outline"></ion-icon>
+                    @Html.ActionLink("Listar Clientes", "ListarClientes", "Clientes", null, new { @class = "itmList", id = "clientLink" })
+                </li>
 
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Compras", "ListarCompras", "Compras", null, new { @class = "itmList", id = "compraLink" })
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="file-tray-full-outline"></ion-icon>
+                    @Html.ActionLink("Listar Compras", "ListarCompras", "Compras", null, new { @class = "itmList", id = "compraLink" })
 
-                    </li>
+                </li>
 
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="file-tray-full-outline"></ion-icon>
-                        @Html.ActionLink("Listar Ventas", "ListarVentas", "Ventas", null, new { @class = "itmList", id = "ventaLink" })
-
-
-                    </li>
-
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="pie-chart-outline"></ion-icon>
-                        <p>Analitica</p>
-                    </li>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="file-tray-full-outline"></ion-icon>
+                    @Html.ActionLink("Listar Ventas", "ListarVentas", "Ventas", null, new { @class = "itmList", id = "ventaLink" })
 
 
+                </li>
 
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="calculator-outline"></ion-icon>
-                        <p>Informes contables</p>
-                    </li>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="document-text-outline"></ion-icon>
-                        <p>Doc. Comerciales</p>
-                    </li>
-                </ul>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="pie-chart-outline"></ion-icon>
+                    <p>Analitica</p>
+                </li>
 
-                <ul>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="help-circle-outline"></ion-icon>
-                        <p>Centro de ayuda</p>
-                    </li>
-                    <li>
-                        <ion-icon class="iconcolor txtcolorgraydark"
-                                  name="cog-outline"></ion-icon>
-                        <p>Configuracion</p>
-                    </li>
-                </ul>
-            </section>
 
-            <section class="enterprisebanner">
-                <ion-icon class="iconbgcolorgreen txtcolorblnk"
-                          name="home-outline"></ion-icon>
-                <div class="enterpriseitem">
-                    <div>
-                        <p>Torque</p>
-                        <p class="txtcolorgray">Empresa</p>
+
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="calculator-outline"></ion-icon>
+                    <p>Informes contables</p>
+                </li>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="document-text-outline"></ion-icon>
+                    <p>Doc. Comerciales</p>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="help-circle-outline"></ion-icon>
+                    <p>Centro de ayuda</p>
+                </li>
+                <li>
+                    <ion-icon class="iconcolor txtcolorgraydark"
+                              name="cog-outline"></ion-icon>
+                    <p>Configuracion</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="enterprisebanner">
+            <ion-icon class="iconbgcolorgreen txtcolorblnk"
+                      name="home-outline"></ion-icon>
+            <div class="enterpriseitem">
+                <div>
+                    <p>Torque</p>
+                    <p class="txtcolorgray">Empresa</p>
+                </div>
+            </div>
+            <ion-icon class="iconcolor txtcolorgraydark"
+                      name="chevron-forward-outline"></ion-icon>
+        </section>
+
+
+    </nav>
+
+    <!--CUERPO-->
+                    <div class="body">
+                        @RenderBody()
                     </div>
-                </div>
-                <ion-icon class="iconcolor txtcolorgraydark"
-                          name="chevron-forward-outline"></ion-icon>
-            </section>
 
-
-        </nav>
-
-        <!--CUERPO-->
-        <div class="body">
-            @RenderBody()
-        </div>
- 
-    </section>
+</section>
 
 
 

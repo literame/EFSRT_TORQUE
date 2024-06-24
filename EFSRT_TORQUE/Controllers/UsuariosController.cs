@@ -57,9 +57,8 @@ namespace EFSRT_TORQUE.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            string usuario = "";
             // Simulación de autenticación
-            string query = "SELECT NombreUsuario FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contrasena";
+            string query = "SELECT NombreUsuario, Rol FROM Usuarios WHERE NombreUsuario = @NombreUsuario AND Contrasena = @Contrasena";
 
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -73,9 +72,16 @@ namespace EFSRT_TORQUE.Controllers
                 {
                     // El usuario ha sido autenticado correctamente
                     FormsAuthentication.SetAuthCookie(model.NombreUsuario, model.RememberMe);
+
+                    // Recuperar el nombre y rol del usuario
+                    string nombreUsuario = reader["NombreUsuario"].ToString();
+                    string rolUsuario = reader["Rol"].ToString();
+
+                    // Pasar los datos al HomeController usando TempData
+                    TempData["NombreUsuario"] = nombreUsuario;
+                    TempData["RolUsuario"] = rolUsuario;
+
                     conn.Close();
-                    usuario = model.NombreUsuario.ToString(); 
-                    ViewBag.Usuario = usuario;
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -88,8 +94,9 @@ namespace EFSRT_TORQUE.Controllers
             }
         }
 
-            // Acción para manejar el cierre de sesión del usuario
-            public ActionResult Logout()
+
+        // Acción para manejar el cierre de sesión del usuario
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");

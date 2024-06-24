@@ -144,7 +144,7 @@
 
 
 .heigthbottom{
-    padding:10px 5px
+    padding:10px 5px;
 
 }
 
@@ -214,3 +214,59 @@
     padding:0 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+
+.botonform{
+
+    height:35px;
+    padding:5px 10px
+}
+
+.felxpos{
+    display:flex;
+    color:black;
+    align-items:center;
+    gap:10px
+}
+
+.bborder {
+    display: flex;
+    color: black;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 5px;
+    color: black;
+    height: 35px;
+    padding: 2px 10px
+}
+
+
+.fcenter{
+    padding: 15px 5px;
+    display:flex;
+    width:500px;
+    justify-content:center;
+    flex-direction:column;
+}
+
+.checkitem{
+    padding: 8px;
+}
+
+.textcenteritem{
+    text-align:center;
+    padding: 8px 0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 180px;
+}
+
+
+.tmn{
+    height: 25px;
+    display: inline-flex;
+}
+
+
+

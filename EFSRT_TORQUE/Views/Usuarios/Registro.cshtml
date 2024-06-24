@@ -15,52 +15,54 @@
         <div class="form-horizontal">
             <h4 class="fontstyle">Ingresa tus datos para registrarte</h4>
             <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="fcenter">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="">
-                @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "" } })
-                    @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+                <div class="">
+                    @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "textcenteritem" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "tmn" } })
+                        @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="">
+                    @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "textcenteritem" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Contrasena, new { htmlAttributes = new { @class = "tmn" } })
+                        @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "textcenteritem" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "tmn" } })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="">
+                    @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "textcenteritem" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Rol, new { htmlAttributes = new { @class = "tmn" } })
+                        @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
-
-            <div class="">
-                @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(model => model.Contrasena, new { htmlAttributes = new { @class = "" } })
-                    @Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="">
-                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "" } })
-                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="">
-                @Html.LabelFor(model => model.Rol, htmlAttributes: new { @class = "" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Rol, new { htmlAttributes = new { @class = "" } })
-                    @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
+            <div class="felxpos">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Registrarse" class="" />
+                    <input type="submit" value="Registrarse" class="botonform" />
+                </div>
+                <div class="bborder">
+                    @Html.ActionLink("Volver", "Login", "Usuarios", null, new { @class = "felxpos" })
+
                 </div>
             </div>
         </div>
     }
     
-<div class="validar">
-    @Html.ActionLink("Volver", "Login", "Usuarios", null, new { @class = "" })
 
-</div>
 
 
 </main>

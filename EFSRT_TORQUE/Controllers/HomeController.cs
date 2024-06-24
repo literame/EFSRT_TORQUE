@@ -81,19 +81,27 @@ namespace EFSRT_TORQUE.Controllers
 
         public ActionResult Index()
         {
+            // Recuperar los datos del usuario desde TempData
+            string nombreUsuario = TempData["NombreUsuario"] as string;
+            string rolUsuario = TempData["RolUsuario"] as string;
+
             decimal totalCompras = ConsultarTotalCompras();
             decimal totalVentas = ConsultarTotalVentas();
 
             decimal diferencia = totalVentas - totalCompras;
-
             decimal totalsoles = diferencia * 3.80M;
 
+            // Pasar los datos a la vista
+            ViewBag.NombreUsuario = nombreUsuario;
+            ViewBag.RolUsuario = rolUsuario;
             ViewBag.TotalCompras = totalCompras;
             ViewBag.TotalVentas = totalVentas;
             ViewBag.Diferencia = diferencia;
             ViewBag.TotalSoles = totalsoles;
+
             return View();
         }
+
 
         public ActionResult About()
         {
